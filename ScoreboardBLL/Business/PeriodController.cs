@@ -18,5 +18,15 @@ namespace ScoreboardBLL
         {
             return _GamePeriod;
         }
+
+        public void IncrementPeriod()
+        {
+            _GamePeriod++;
+        }
+
+        public void ResetPeriod()
+        {
+            _GamePeriod = 0;
+        }
     }
 }
