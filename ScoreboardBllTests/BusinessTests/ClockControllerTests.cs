@@ -37,7 +37,7 @@ namespace ScoreboardBllTests
         }
 
         [TestMethod]
-        public void Test01_SetClockForOneMinute_FireGameClockTick_ShouldBe59Seconds()
+        public void SetClockForOneMinute_FireGameClockTick_ShouldBe59Seconds()
         {
             //Arrange
             var startingTime = new GameTime()
@@ -57,7 +57,7 @@ namespace ScoreboardBllTests
         }
 
         [TestMethod]
-        public void Test02_SubscribeToEventHandler_ShouldFireEvent()
+        public void SubscribeToEvent_DecrementShouldFireEvent()
         {
             //Arrange
             EventMediator.GetEventMediator().ClockChange += ClockControllerTests_ClockChange;
@@ -70,7 +70,20 @@ namespace ScoreboardBllTests
         }
 
         [TestMethod]
-        public void Test03_SetClockForOneTenth_FireDecrementTwice_ShouldNotGoNegative()
+        public void SubscribeToEvent_SetGameTimeShouldFireEvent()
+        {
+            //Arrange
+            EventMediator.GetEventMediator().ClockChange += ClockControllerTests_ClockChange;
+
+            //Act
+            clockController.SetGameTime(new GameTime());
+
+            //Assert
+            Assert.IsTrue(methodWasCalled);
+        }
+
+        [TestMethod]
+        public void SetClockForOneTenth_FireDecrementTwice_ShouldNotGoNegative()
         {
             //Arrange
             var startingTime = new GameTime()
@@ -91,7 +104,7 @@ namespace ScoreboardBllTests
         }
 
         [TestMethod]
-        public void Test04_SetClockForNegativeTime_ShouldNotGoNegative()
+        public void SetClockForNegativeTime_ShouldNotGoNegative()
         {
             //Arrange
             var startingTime = new GameTime()

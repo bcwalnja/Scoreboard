@@ -36,7 +36,7 @@ namespace ScoreboardBllTests
         }
 
         [TestMethod]
-        public void Test01_HomeScoresThreePoints_ScoreShouldBeCorrect()
+        public void HomeScoresThreePoints_ScoreShouldBeCorrect()
         {
             //Arrange
             var score = scoreController.GetCurrentScore();
@@ -52,7 +52,7 @@ namespace ScoreboardBllTests
         }
 
         [TestMethod]
-        public void Test02_AwayScoresThreePoints_ScoreShouldBeCorrect()
+        public void AwayScoresThreePoints_ScoreShouldBeCorrect()
         {
             //Arrange
             var score = scoreController.GetCurrentScore();
@@ -68,7 +68,7 @@ namespace ScoreboardBllTests
         }
 
         [TestMethod]
-        public void Test03_RemovePoints_ScoreShouldNotGoNegative()
+        public void RemovePoints_ScoreShouldNotGoNegative()
         {
             //Arrange
             scoreController.SetGameScore(new GameScore());
@@ -84,13 +84,26 @@ namespace ScoreboardBllTests
         }
 
         [TestMethod]
-        public void Test04_SubscribeToEvent_EventHandlerShouldBeCalled()
+        public void SubscribeToEvent_ScoreEventShouldFire()
         {
             //Arrange
             EventMediator.GetEventMediator().ScoreChange += ScoreControllerTests_ScoreChange;
 
             //Act
             scoreController.ScoreEvent(Team.Away, 0);
+
+            //Assert
+            Assert.IsTrue(methodWasCalled);
+        }
+
+        [TestMethod]
+        public void SubscribeToEvent_SetGameScoreShouldFire()
+        {
+            //Arrange
+            EventMediator.GetEventMediator().ScoreChange += ScoreControllerTests_ScoreChange;
+
+            //Act
+            scoreController.SetGameScore(new GameScore());
 
             //Assert
             Assert.IsTrue(methodWasCalled);

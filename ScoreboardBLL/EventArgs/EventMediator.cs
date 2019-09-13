@@ -28,5 +28,12 @@ namespace ScoreboardBLL
         {
             ClockChange?.Invoke(this, new ClockChangeEventArgs(gameTime));
         }
+
+        public event EventHandler<FoulChangeEventArgs> FoulsChange;
+
+        public void OnFoulsChange(GameFouls gameFouls)
+        {
+            FoulsChange?.Invoke(this, new FoulChangeEventArgs(gameFouls));
+        }
     }
 }

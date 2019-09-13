@@ -31,13 +31,13 @@ namespace ScoreboardBllTests
             }
         }
 
-        private void FoulControllerTests_FoulsChanged(object sender, EventArgs e)
+        private void FoulControllerTests_FoulsChanged(object sender, FoulChangeEventArgs e)
         {
             methodWasCalled = true;
         }
 
         [TestMethod]
-        public void Test01_AddFoulToHomeTeam_ShouldHaveOneFoul()
+        public void AddFoulToHomeTeam_ShouldHaveOneFoul()
         {
             //Arrange //Act
             _foulController.ResetAllFouls();
@@ -49,7 +49,7 @@ namespace ScoreboardBllTests
         }
 
         [TestMethod]
-        public void Test02_AddFoulToAwayTeam_ShouldHaveOneFoul()
+        public void AddFoulToAwayTeam_ShouldHaveOneFoul()
         {
             //Arrange //Act
             _foulController.ResetAllFouls();
@@ -61,7 +61,7 @@ namespace ScoreboardBllTests
         }
 
         [TestMethod]
-        public void Test03_DecrementHomeFouls_ShouldRemoveFoul()
+        public void DecrementHomeFouls_ShouldRemoveFoul()
         {
             //Arrange //Act
             _foulController.ResetAllFouls();
@@ -74,6 +74,19 @@ namespace ScoreboardBllTests
             //Assert
             Assert.AreEqual(0, _foulController.GetTeamFouls(Team.Home));
             Assert.AreEqual(2, _foulController.GetTeamFouls(Team.Away));
+        }
+
+        [TestMethod]
+        public void SubscribeToEvent_DecrementShouldFireEvent()
+        {
+            //Arrange
+            EventMediator.GetEventMediator().FoulsChange += FoulControllerTests_FoulsChanged;
+
+            //Act
+            _foulController.DecrementFouls(Team.Away);
+
+            //Assert
+            Assert.IsTrue(methodWasCalled);
         }
     }
 }
