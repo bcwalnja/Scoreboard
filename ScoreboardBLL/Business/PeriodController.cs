@@ -5,19 +5,16 @@ namespace ScoreboardBLL
     public class PeriodController
     {
         private static readonly PeriodController _Instance = new PeriodController();
-        private static GamePeriod _GamePeriod;
+        private static int _GamePeriod;
 
-        private PeriodController()
-        {
-            _GamePeriod = new GamePeriod();
-        }
+        private PeriodController() { }
 
         public static PeriodController GetPeriodController()
         {
             return _Instance;
         }
 
-        public GameTime GetGamePeriod()
+        public int GetGamePeriod()
         {
             return _GamePeriod;
         }
