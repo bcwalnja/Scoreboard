@@ -15,18 +15,18 @@ namespace ScoreboardBLL
             return _Instance;
         }
 
-        public event EventHandler<ScoreEventArgs> ScoreAction;
+        public event EventHandler<ScoreChangeEventArgs> ScoreChange;
 
-        public void OnScoreAction(Team team, int points)
+        public void OnScoreChange(GameScore gameScore)
         {
-            ScoreAction?.Invoke(this, new ScoreEventArgs(team, points));
+            ScoreChange?.Invoke(this, new ScoreChangeEventArgs(gameScore));
         }
 
-        public event EventHandler<EventArgs> GameClockTicks;
+        public event EventHandler<ClockChangeEventArgs> ClockChange;
 
-        public void OnGameClockTicks()
+        public void OnClockChange(GameTime gameTime)
         {
-            GameClockTicks?.Invoke(this, null);
+            ClockChange?.Invoke(this, new ClockChangeEventArgs(gameTime));
         }
     }
 }

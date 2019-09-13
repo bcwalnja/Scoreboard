@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ScoreboardBLL
+﻿namespace ScoreboardBLL
 {
     public class ScoreController
     {
         private static readonly ScoreController _Instance = new ScoreController();
-        private readonly GameScore CurrentScore;
+        private static GameScore _CurrentScore;
 
         private ScoreController()
         {
-            CurrentScore = new GameScore();
-            EventMediator.GetEventMediator().ScoreAction += ScoreController_ScoreAction;
+            _CurrentScore = new GameScore();
         }
 
         public static ScoreController GetScoreController()
@@ -20,21 +15,36 @@ namespace ScoreboardBLL
             return _Instance;
         }
 
-        private void ScoreController_ScoreAction(object sender, ScoreEventArgs e)
+        private static void FireScoreChangedEventHandler()
         {
-            if (e.Team == Team.Away)
-            {
-                CurrentScore.AwayScore += e.Points;
-            }
-            else
-            {
-                CurrentScore.HomeScore += e.Points;
-            }
+            EventMediator.GetEventMediator().OnScoreChange(_CurrentScore);
         }
 
         public GameScore GetCurrentScore()
         {
-            return this.CurrentScore;
+            return _CurrentScore;
+        }
+
+        public void ScoreEvent(Team team, int points)
+        {
+            if (team == Team.Away)
+            {
+                _CurrentScore.AwayScore += points;
+                _CurrentScore.AwayScore = _CurrentScore.AwayScore < 0 ? 0 : _CurrentScore.AwayScore;
+            }
+            else
+            {
+                _CurrentScore.HomeScore += points;
+                _CurrentScore.HomeScore = _CurrentScore.HomeScore < 0 ? 0 : _CurrentScore.HomeScore;
+            }
+            FireScoreChangedEventHandler();
+        }
+
+        public void SetGameScore(GameScore gameScore)
+        {
+            _CurrentScore.HomeScore = gameScore.HomeScore;
+            _CurrentScore.AwayScore = gameScore.AwayScore;
+            FireScoreChangedEventHandler();
         }
     }
 }

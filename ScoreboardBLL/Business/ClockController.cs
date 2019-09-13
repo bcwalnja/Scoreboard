@@ -10,17 +10,11 @@ namespace ScoreboardBLL
         private ClockController()
         {
             _GameTime = new GameTime();
-            EventMediator.GetEventMediator().GameClockTicks += ClockController_GameClockTicks;
         }
 
         public static ClockController GetClockController()
         {
             return _Instance;
-        }
-
-        private void ClockController_GameClockTicks(object sender, EventArgs e)
-        {
-            DecrementGameTimeByTenths();
         }
 
         public GameTime GetGameTime()
@@ -30,10 +24,18 @@ namespace ScoreboardBLL
 
         public void SetGameTime(GameTime gameTime)
         {
-            _GameTime = gameTime;
+            _GameTime.Minutes = gameTime.Minutes < 0 ? 0 : gameTime.Minutes;
+            _GameTime.Seconds = gameTime.Seconds < 0 ? 0 : gameTime.Seconds;
+            _GameTime.Tenths = gameTime.Tenths < 0 ? 0 : gameTime.Tenths;
+            FireGameClockChangedEvent();
         }
 
-        private void DecrementGameTimeByTenths()
+        private static void FireGameClockChangedEvent()
+        {
+            EventMediator.GetEventMediator().OnClockChange(_GameTime);
+        }
+
+        public void DecrementGameTimeByTenth()
         {
             _GameTime.Tenths--;
             if (_GameTime.Tenths < 0)
@@ -49,8 +51,13 @@ namespace ScoreboardBLL
             if (_GameTime.Minutes < 0)
             {
                 //GAME IS OVER
-                //(Code to handle that should probably go into whatever code handles the timer)
+                _GameTime.Tenths = 0;
+                _GameTime.Seconds = 0;
+                _GameTime.Minutes = 0;
+
+                //TODO: Fire "game clock expired"
             }
+            FireGameClockChangedEvent();
         }
     }
 }

@@ -9,11 +9,13 @@ namespace ScoreboardBllTests
     {
         protected IDisposable[] disposables;
         private ClockController clockController;
+        private bool methodWasCalled;
 
         [TestInitialize]
         public void TestInitialize()
         {
             clockController = ClockController.GetClockController();
+            methodWasCalled = false;
         }
 
 
@@ -29,8 +31,13 @@ namespace ScoreboardBllTests
             }
         }
 
+        private void ClockControllerTests_ClockChange(object sender, ClockChangeEventArgs e)
+        {
+            methodWasCalled = true;
+        }
+
         [TestMethod]
-        public void Test01_HomeScoresThreePoints_ScoreShouldBeCorrect()
+        public void Test01_SetClockForOneMinute_FireGameClockTick_ShouldBe59Seconds()
         {
             //Arrange
             var startingTime = new GameTime()
@@ -40,13 +47,68 @@ namespace ScoreboardBllTests
             clockController.SetGameTime(startingTime);
 
             //Act
-            EventMediator.GetEventMediator().OnGameClockTicks();
+            clockController.DecrementGameTimeByTenth();
             var time = clockController.GetGameTime();
 
             //Assert
             Assert.AreEqual(0, time.Minutes);
             Assert.AreEqual(59, time.Seconds);
             Assert.AreEqual(9, time.Tenths);
+        }
+
+        [TestMethod]
+        public void Test02_SubscribeToEventHandler_ShouldFireEvent()
+        {
+            //Arrange
+            EventMediator.GetEventMediator().ClockChange += ClockControllerTests_ClockChange;
+
+            //Act
+            clockController.DecrementGameTimeByTenth();
+
+            //Assert
+            Assert.IsTrue(methodWasCalled);
+        }
+
+        [TestMethod]
+        public void Test03_SetClockForOneTenth_FireDecrementTwice_ShouldNotGoNegative()
+        {
+            //Arrange
+            var startingTime = new GameTime()
+            {
+                Tenths = 1
+            };
+            clockController.SetGameTime(startingTime);
+
+            //Act
+            clockController.DecrementGameTimeByTenth();
+            clockController.DecrementGameTimeByTenth();
+            var time = clockController.GetGameTime();
+
+            //Assert
+            Assert.AreEqual(0, time.Minutes);
+            Assert.AreEqual(0, time.Seconds);
+            Assert.AreEqual(0, time.Tenths);
+        }
+
+        [TestMethod]
+        public void Test04_SetClockForNegativeTime_ShouldNotGoNegative()
+        {
+            //Arrange
+            var startingTime = new GameTime()
+            {
+                Tenths = -1,
+                Seconds = -1,
+                Minutes = -1
+            };
+            clockController.SetGameTime(startingTime);
+
+            //Act
+            var time = clockController.GetGameTime();
+
+            //Assert
+            Assert.AreEqual(0, time.Minutes);
+            Assert.AreEqual(0, time.Seconds);
+            Assert.AreEqual(0, time.Tenths);
         }
     }
 }
