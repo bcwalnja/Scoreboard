@@ -3,5 +3,10 @@
     public class GameFouls
     {
         public System.Collections.Generic.List<Foul> FoulList { get; set; }
+
+        public GameFouls()
+        {
+            FoulList = new System.Collections.Generic.List<Foul>();
+        }
     }
 }

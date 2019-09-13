@@ -77,6 +77,31 @@ namespace ScoreboardBllTests
         }
 
         [TestMethod]
+        public void DecrementHomeFouls_ShouldNotGoNegative()
+        {
+            //Arrange //Act
+            _foulController.ResetAllFouls();
+            _foulController.DecrementFouls(Team.Away);
+
+            //Assert
+            Assert.AreEqual(0, _foulController.GetTeamFouls(Team.Home));
+            Assert.AreEqual(0, _foulController.GetTeamFouls(Team.Away));
+        }
+
+        [TestMethod]
+        public void SubscribeToEvent_IncrementShouldFireEvent()
+        {
+            //Arrange
+            EventMediator.GetEventMediator().FoulsChange += FoulControllerTests_FoulsChanged;
+
+            //Act
+            _foulController.IncrementFouls(Team.Away);
+
+            //Assert
+            Assert.IsTrue(methodWasCalled);
+        }
+
+        [TestMethod]
         public void SubscribeToEvent_DecrementShouldFireEvent()
         {
             //Arrange
@@ -84,6 +109,19 @@ namespace ScoreboardBllTests
 
             //Act
             _foulController.DecrementFouls(Team.Away);
+
+            //Assert
+            Assert.IsTrue(methodWasCalled);
+        }
+
+        [TestMethod]
+        public void SubscribeToEvent_ResetShouldFireEvent()
+        {
+            //Arrange
+            EventMediator.GetEventMediator().FoulsChange += FoulControllerTests_FoulsChanged;
+
+            //Act
+            _foulController.ResetAllFouls();
 
             //Assert
             Assert.IsTrue(methodWasCalled);

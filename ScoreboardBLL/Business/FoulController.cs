@@ -6,11 +6,11 @@ namespace ScoreboardBLL
     public class FoulController
     {
         private static readonly FoulController _Instance = new FoulController();
-        private static List<Foul> _TeamFouls;
+        private static GameFouls _GameFouls;
 
         private FoulController()
         {
-            _TeamFouls = new List<Foul>();
+            _GameFouls = new GameFouls();
         }
 
         public static FoulController GetFoulController()
@@ -18,37 +18,36 @@ namespace ScoreboardBLL
             return _Instance;
         }
 
-        public List<Foul> GetAllFouls()
+        public GameFouls GetAllFouls()
         {
-            return _TeamFouls;
+            return _GameFouls;
         }
 
         public int GetTeamFouls(Team team)
         {
-            return _TeamFouls.Where(x => x.Team == team).Count();
+            return _GameFouls.FoulList.Where(x => x.Team == team).Count();
         }
 
         public void IncrementFouls(Team team)
         {
-            _TeamFouls.Add(new Foul(team));
-            //TODO: Fire "fouls changed event"
+            _GameFouls.FoulList.Add(new Foul(team));
+            EventMediator.GetEventMediator().OnFoulsChange(_GameFouls);
         }
 
         public void DecrementFouls(Team team)
         {
-            Foul foul = _TeamFouls.FirstOrDefault(x => x.Team == team);
+            Foul foul = _GameFouls.FoulList.FirstOrDefault(x => x.Team == team);
             if (foul != null)
             {
-                _TeamFouls.Remove(foul);
+                _GameFouls.FoulList.Remove(foul);
             }
-
-            //TODO: Fire "fouls changed event"
+            EventMediator.GetEventMediator().OnFoulsChange(_GameFouls);
         }
 
         public void ResetAllFouls()
         {
-            _TeamFouls.Clear();
-            //TODO: Fire "fouls changed event"
+            _GameFouls.FoulList.Clear();
+            EventMediator.GetEventMediator().OnFoulsChange(_GameFouls);
         }
     }
 }
