@@ -15,7 +15,7 @@ namespace ScoreboardBllTests
         [TestInitialize]
         public void TestInitialize()
         {
-            _foulController = FoulController.();
+            _foulController = FoulController.GetFoulController();
         }
 
         [TestCleanup]
@@ -31,7 +31,7 @@ namespace ScoreboardBllTests
             }
         }
 
-        private void ScoreControllerTests_ScoreChange(object sender, ScoreChangeEventArgs e)
+        private void FoulControllerTests_FoulsChanged(object sender, EventArgs e)
         {
             methodWasCalled = true;
         }
@@ -40,12 +40,40 @@ namespace ScoreboardBllTests
         public void Test01_AddFoulToHomeTeam_ShouldHaveOneFoul()
         {
             //Arrange //Act
-            
+            _foulController.ResetAllFouls();
             _foulController.IncrementFouls(Team.Home);
 
             //Assert
             Assert.AreEqual(1, _foulController.GetTeamFouls(Team.Home));
             Assert.AreEqual(0, _foulController.GetTeamFouls(Team.Away));
+        }
+
+        [TestMethod]
+        public void Test02_AddFoulToAwayTeam_ShouldHaveOneFoul()
+        {
+            //Arrange //Act
+            _foulController.ResetAllFouls();
+            _foulController.IncrementFouls(Team.Away);
+
+            //Assert
+            Assert.AreEqual(0, _foulController.GetTeamFouls(Team.Home));
+            Assert.AreEqual(1, _foulController.GetTeamFouls(Team.Away));
+        }
+
+        [TestMethod]
+        public void Test03_DecrementHomeFouls_ShouldRemoveFoul()
+        {
+            //Arrange //Act
+            _foulController.ResetAllFouls();
+            _foulController.IncrementFouls(Team.Away);
+            _foulController.IncrementFouls(Team.Away);
+            _foulController.IncrementFouls(Team.Away);
+
+            _foulController.DecrementFouls(Team.Away);
+
+            //Assert
+            Assert.AreEqual(0, _foulController.GetTeamFouls(Team.Home));
+            Assert.AreEqual(2, _foulController.GetTeamFouls(Team.Away));
         }
     }
 }

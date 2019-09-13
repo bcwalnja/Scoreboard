@@ -36,16 +36,19 @@ namespace ScoreboardBLL
 
         public void DecrementFouls(Team team)
         {
-            if (HasFouls(team))
+            Foul foul = _TeamFouls.FirstOrDefault(x => x.Team == team);
+            if (foul != null)
             {
-                _TeamFouls.Add(new Foul(team));
+                _TeamFouls.Remove(foul);
             }
+
             //TODO: Fire "fouls changed event"
         }
 
-        private bool HasFouls(Team team)
+        public void ResetAllFouls()
         {
-            return _TeamFouls.Any(x => x.Team == team);
+            _TeamFouls.Clear();
+            //TODO: Fire "fouls changed event"
         }
     }
 }
