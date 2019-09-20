@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Scoreboard
 {
-    public partial class Form1 : Form
+    public partial class ControllerForm : Form
     {
-        public Form1()
+        public ControllerForm()
         {
             InitializeComponent();
         }
