@@ -17,6 +17,8 @@ namespace Scoreboard
         private FoulController FoulController;
         private ClockController ClockController;
         private PeriodController PeriodController;
+        private PossessionController PossessionController;
+        private TimeoutController TimeoutController;
 
         public ControllerForm()
         {
@@ -27,10 +29,12 @@ namespace Scoreboard
 
         private void SubscribeToEvents()
         {
-            EventMediator mediator = ScoreboardBLL.EventMediator.GetEventMediator();
+            EventMediator mediator = EventMediator.GetEventMediator();
             mediator.ClockChange += ControllerForm_ClockChange;
             mediator.FoulsChange += ControllerForm_FoulsChange;
             mediator.ScoreChange += ControllerForm_ScoreChange;
+            mediator.TimeoutChange += ControllerForm_TimeoutChange;
+            mediator.PossessionChange += ControllerForm_PossessionChange;
         }
 
         private void InitializeControllerInstances()
@@ -39,6 +43,8 @@ namespace Scoreboard
             this.FoulController = ScoreboardBLL.FoulController.GetFoulController();
             this.ClockController = ScoreboardBLL.ClockController.GetClockController();
             this.PeriodController = ScoreboardBLL.PeriodController.GetPeriodController();
+            this.PossessionController = ScoreboardBLL.PossessionController.GetPossessionController();
+            this.TimeoutController = ScoreboardBLL.TimeoutController.GetTimeoutController();
         }
 
         private void BtnHomeMinus_Click(object sender, EventArgs e)
@@ -53,7 +59,7 @@ namespace Scoreboard
 
         private void BtnPossession_Click(object sender, EventArgs e)
         {
-
+            PossessionController.ChangePossession();
         }
 
         private void BtnMinutesMinus_Click(object sender, EventArgs e)
@@ -134,12 +140,36 @@ namespace Scoreboard
 
         private void ControllerForm_FoulsChange(object sender, FoulChangeEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ControllerForm_ClockChange(object sender, ClockChangeEventArgs e)
         {
-            throw new NotImplementedException();
+            
+        }
+
+        private void ControllerForm_PossessionChange(object sender, PossessionChangeEventArgs e)
+        {
+            var awaySize = ArrowAwayPossession.Size;
+            var homeSize = ArrowHomePossession.Size;
+            var maxX = Math.Max(awaySize.Width, homeSize.Width);
+            var maxY = Math.Max(awaySize.Height, homeSize.Height);
+
+            if (e.Team == Team.Home)
+            {
+                ArrowAwayPossession.Size = new SizeF(0, 0);
+                ArrowHomePossession.Size = new SizeF(maxX, maxY);
+            }
+            else
+            {
+                ArrowAwayPossession.Size = new SizeF(maxX, maxY);
+                ArrowHomePossession.Size = new SizeF(0, 0);
+            }
+        }
+
+        private void ControllerForm_TimeoutChange(object sender, TimeoutChangeEventArgs e)
+        {
+            
         }
     }
 }
