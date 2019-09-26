@@ -203,6 +203,14 @@
             this.layoutControlItem34 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.layoutControlItem35 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnTimeoutClear = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem36 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnTimeoutPlus = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem37 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnTimeoutStart = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem38 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalGauge9)).BeginInit();
@@ -285,10 +293,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem34)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem35)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem36)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem37)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem38)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.btnTimeoutStart);
+            this.layoutControl1.Controls.Add(this.btnTimeoutPlus);
+            this.layoutControl1.Controls.Add(this.btnTimeoutClear);
+            this.layoutControl1.Controls.Add(this.labelControl5);
             this.layoutControl1.Controls.Add(this.btnAwayFoulsMinus);
             this.layoutControl1.Controls.Add(this.btnAwayFoulsPlus);
             this.layoutControl1.Controls.Add(this.btnPeriod);
@@ -462,7 +478,7 @@
             // digitalGauge9
             // 
             this.digitalGauge9.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#34000000");
-            this.digitalGauge9.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#7F93C6");
+            this.digitalGauge9.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FFFF64");
             this.digitalGauge9.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent11});
             this.digitalGauge9.Bounds = new System.Drawing.Rectangle(6, 6, 88, 62);
@@ -475,7 +491,7 @@
             // 
             this.digitalBackgroundLayerComponent11.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(121.925F, 99.9625F);
             this.digitalBackgroundLayerComponent11.Name = "digitalBackgroundLayerComponent1";
-            this.digitalBackgroundLayerComponent11.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style25;
+            this.digitalBackgroundLayerComponent11.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style3;
             this.digitalBackgroundLayerComponent11.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(26F, 0F);
             this.digitalBackgroundLayerComponent11.ZOrder = 1000;
             // 
@@ -622,16 +638,16 @@
             this.digitalGauge7});
             this.gaugeControl9.Location = new System.Drawing.Point(387, 291);
             this.gaugeControl9.Name = "gaugeControl9";
-            this.gaugeControl9.Size = new System.Drawing.Size(155, 100);
+            this.gaugeControl9.Size = new System.Drawing.Size(172, 100);
             this.gaugeControl9.TabIndex = 19;
             // 
             // digitalGauge7
             // 
             this.digitalGauge7.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#34000000");
-            this.digitalGauge7.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#7F93C6");
+            this.digitalGauge7.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FF5050");
             this.digitalGauge7.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent9});
-            this.digitalGauge7.Bounds = new System.Drawing.Rectangle(6, 6, 143, 88);
+            this.digitalGauge7.Bounds = new System.Drawing.Rectangle(6, 6, 160, 88);
             this.digitalGauge7.DigitCount = 2;
             this.digitalGauge7.Name = "digitalGauge7";
             this.digitalGauge7.Padding = new DevExpress.XtraGauges.Core.Base.TextSpacing(26, 20, 26, 20);
@@ -641,7 +657,7 @@
             // 
             this.digitalBackgroundLayerComponent9.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(121.925F, 99.9625F);
             this.digitalBackgroundLayerComponent9.Name = "digitalBackgroundLayerComponent1";
-            this.digitalBackgroundLayerComponent9.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style25;
+            this.digitalBackgroundLayerComponent9.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style3;
             this.digitalBackgroundLayerComponent9.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(26F, 0F);
             this.digitalBackgroundLayerComponent9.ZOrder = 1000;
             // 
@@ -716,7 +732,7 @@
             // digitalGauge8
             // 
             this.digitalGauge8.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#34000000");
-            this.digitalGauge8.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#7F93C6");
+            this.digitalGauge8.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FFFF64");
             this.digitalGauge8.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent10});
             this.digitalGauge8.Bounds = new System.Drawing.Rectangle(6, 6, 88, 62);
@@ -729,7 +745,7 @@
             // 
             this.digitalBackgroundLayerComponent10.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(73.9625F, 99.9625F);
             this.digitalBackgroundLayerComponent10.Name = "digitalBackgroundLayerComponent1";
-            this.digitalBackgroundLayerComponent10.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style25;
+            this.digitalBackgroundLayerComponent10.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style3;
             this.digitalBackgroundLayerComponent10.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(26F, 0F);
             this.digitalBackgroundLayerComponent10.ZOrder = 1000;
             // 
@@ -825,7 +841,7 @@
             // digitalGauge6
             // 
             this.digitalGauge6.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#34000000");
-            this.digitalGauge6.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#7F93C6");
+            this.digitalGauge6.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FFFF64");
             this.digitalGauge6.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent8});
             this.digitalGauge6.Bounds = new System.Drawing.Rectangle(6, 6, 144, 62);
@@ -838,7 +854,7 @@
             // 
             this.digitalBackgroundLayerComponent8.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(121.925F, 99.9625F);
             this.digitalBackgroundLayerComponent8.Name = "digitalBackgroundLayerComponent1";
-            this.digitalBackgroundLayerComponent8.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style25;
+            this.digitalBackgroundLayerComponent8.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style3;
             this.digitalBackgroundLayerComponent8.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(26F, 0F);
             this.digitalBackgroundLayerComponent8.ZOrder = 1000;
             // 
@@ -1003,7 +1019,7 @@
             this.layoutControlItem16.OptionsTableLayoutItem.ColumnSpan = 2;
             this.layoutControlItem16.OptionsTableLayoutItem.RowIndex = 7;
             this.layoutControlItem16.OptionsTableLayoutItem.RowSpan = 3;
-            this.layoutControlItem16.Size = new System.Drawing.Size(159, 104);
+            this.layoutControlItem16.Size = new System.Drawing.Size(176, 104);
             this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem16.TextVisible = false;
             // 
@@ -1224,7 +1240,11 @@
             this.layoutControlItem33,
             this.layoutControlItem19,
             this.layoutControlItem18,
-            this.layoutControlItem17});
+            this.layoutControlItem17,
+            this.layoutControlItem35,
+            this.layoutControlItem37,
+            this.layoutControlItem36,
+            this.layoutControlItem38});
             this.layoutControlGroup1.LayoutMode = DevExpress.XtraLayout.Utils.LayoutMode.Table;
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
@@ -1241,13 +1261,13 @@
             columnDefinition6.SizeType = System.Windows.Forms.SizeType.AutoSize;
             columnDefinition6.Width = 32D;
             columnDefinition7.SizeType = System.Windows.Forms.SizeType.AutoSize;
-            columnDefinition7.Width = 101D;
+            columnDefinition7.Width = 121D;
             columnDefinition8.SizeType = System.Windows.Forms.SizeType.AutoSize;
-            columnDefinition8.Width = 58D;
+            columnDefinition8.Width = 55D;
             columnDefinition9.SizeType = System.Windows.Forms.SizeType.AutoSize;
-            columnDefinition9.Width = 32D;
+            columnDefinition9.Width = 80D;
             columnDefinition10.SizeType = System.Windows.Forms.SizeType.AutoSize;
-            columnDefinition10.Width = 111D;
+            columnDefinition10.Width = 46D;
             columnDefinition11.SizeType = System.Windows.Forms.SizeType.AutoSize;
             columnDefinition11.Width = 52D;
             columnDefinition12.SizeType = System.Windows.Forms.SizeType.AutoSize;
@@ -1724,6 +1744,94 @@
             this.emptySpaceItem2.Size = new System.Drawing.Size(837, 20);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl5.Appearance.Options.UseFont = true;
+            this.labelControl5.Location = new System.Drawing.Point(387, 253);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(117, 34);
+            this.labelControl5.StyleController = this.layoutControl1;
+            this.labelControl5.TabIndex = 29;
+            this.labelControl5.Text = "Timeout";
+            // 
+            // layoutControlItem35
+            // 
+            this.layoutControlItem35.Control = this.labelControl5;
+            this.layoutControlItem35.Location = new System.Drawing.Point(363, 229);
+            this.layoutControlItem35.Name = "layoutControlItem35";
+            this.layoutControlItem35.OptionsTableLayoutItem.ColumnIndex = 6;
+            this.layoutControlItem35.OptionsTableLayoutItem.RowIndex = 6;
+            this.layoutControlItem35.Size = new System.Drawing.Size(121, 38);
+            this.layoutControlItem35.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem35.TextVisible = false;
+            // 
+            // btnTimeoutClear
+            // 
+            this.btnTimeoutClear.Location = new System.Drawing.Point(563, 369);
+            this.btnTimeoutClear.Name = "btnTimeoutClear";
+            this.btnTimeoutClear.Size = new System.Drawing.Size(76, 22);
+            this.btnTimeoutClear.StyleController = this.layoutControl1;
+            this.btnTimeoutClear.TabIndex = 37;
+            this.btnTimeoutClear.Text = "Clear";
+            // 
+            // layoutControlItem36
+            // 
+            this.layoutControlItem36.Control = this.btnTimeoutClear;
+            this.layoutControlItem36.Location = new System.Drawing.Point(539, 345);
+            this.layoutControlItem36.MinSize = new System.Drawing.Size(80, 26);
+            this.layoutControlItem36.Name = "layoutControlItem36";
+            this.layoutControlItem36.OptionsTableLayoutItem.ColumnIndex = 8;
+            this.layoutControlItem36.OptionsTableLayoutItem.RowIndex = 9;
+            this.layoutControlItem36.Size = new System.Drawing.Size(80, 26);
+            this.layoutControlItem36.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem36.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem36.TextVisible = false;
+            // 
+            // btnTimeoutPlus
+            // 
+            this.btnTimeoutPlus.Location = new System.Drawing.Point(563, 330);
+            this.btnTimeoutPlus.Name = "btnTimeoutPlus";
+            this.btnTimeoutPlus.Size = new System.Drawing.Size(76, 35);
+            this.btnTimeoutPlus.StyleController = this.layoutControl1;
+            this.btnTimeoutPlus.TabIndex = 38;
+            this.btnTimeoutPlus.Text = "+";
+            // 
+            // layoutControlItem37
+            // 
+            this.layoutControlItem37.Control = this.btnTimeoutPlus;
+            this.layoutControlItem37.Location = new System.Drawing.Point(539, 306);
+            this.layoutControlItem37.MinSize = new System.Drawing.Size(24, 26);
+            this.layoutControlItem37.Name = "layoutControlItem37";
+            this.layoutControlItem37.OptionsTableLayoutItem.ColumnIndex = 8;
+            this.layoutControlItem37.OptionsTableLayoutItem.RowIndex = 8;
+            this.layoutControlItem37.Size = new System.Drawing.Size(80, 39);
+            this.layoutControlItem37.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem37.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem37.TextVisible = false;
+            // 
+            // btnTimeoutStart
+            // 
+            this.btnTimeoutStart.Location = new System.Drawing.Point(563, 291);
+            this.btnTimeoutStart.Name = "btnTimeoutStart";
+            this.btnTimeoutStart.Size = new System.Drawing.Size(76, 35);
+            this.btnTimeoutStart.StyleController = this.layoutControl1;
+            this.btnTimeoutStart.TabIndex = 39;
+            this.btnTimeoutStart.Text = "Start";
+            // 
+            // layoutControlItem38
+            // 
+            this.layoutControlItem38.Control = this.btnTimeoutStart;
+            this.layoutControlItem38.Location = new System.Drawing.Point(539, 267);
+            this.layoutControlItem38.MinSize = new System.Drawing.Size(80, 26);
+            this.layoutControlItem38.Name = "layoutControlItem38";
+            this.layoutControlItem38.OptionsTableLayoutItem.ColumnIndex = 8;
+            this.layoutControlItem38.OptionsTableLayoutItem.RowIndex = 7;
+            this.layoutControlItem38.Size = new System.Drawing.Size(80, 39);
+            this.layoutControlItem38.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem38.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem38.TextVisible = false;
+            // 
             // ControllerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1814,6 +1922,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem34)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem35)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem36)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem37)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem38)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1935,6 +2047,14 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem33;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraEditors.SimpleButton btnTimeoutStart;
+        private DevExpress.XtraEditors.SimpleButton btnTimeoutPlus;
+        private DevExpress.XtraEditors.SimpleButton btnTimeoutClear;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem35;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem37;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem36;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem38;
     }
 }
 
