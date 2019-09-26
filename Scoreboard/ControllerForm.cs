@@ -164,7 +164,16 @@ namespace Scoreboard
 
         private void ControllerForm_PossessionChange(object sender, PossessionChangeEventArgs e)
         {
-            //TODO: FIND A WAY TO MAKE THE ARROWS DISAPPEAR WHEN THE POSSESSION IS CHANGED
+            if (e.Team == Team.Home)
+            {
+                lblAwayPossession.Text = string.Empty;
+                lblHomePossession.Text = "<";
+            }
+            else
+            {
+                lblAwayPossession.Text = ">";
+                lblHomePossession.Text = string.Empty;
+            }
         }
 
         private void ControllerForm_TimeoutChange(object sender, TimeoutChangeEventArgs e)
