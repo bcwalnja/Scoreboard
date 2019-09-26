@@ -140,31 +140,31 @@ namespace Scoreboard
 
         private void ControllerForm_FoulsChange(object sender, FoulChangeEventArgs e)
         {
-            
+            txtHomeFouls.Text = e.GameFouls.FoulList.Where(x => x.Team == Team.Home).Count().ToString();
+            txtAwayFouls.Text = e.GameFouls.FoulList.Where(x => x.Team == Team.Away).Count().ToString();
         }
 
         private void ControllerForm_ClockChange(object sender, ClockChangeEventArgs e)
         {
-            
+            string gametime = string.Empty;
+            if (e.GameTime.Minutes > 0)
+            {
+                string minutes = e.GameTime.Minutes.ToString().PadLeft(2, '0');
+                string seconds = e.GameTime.Seconds.ToString().PadLeft(2, '0');
+                gametime = $"{minutes}:{seconds}";
+            }
+            else
+            {
+                string seconds = e.GameTime.Seconds.ToString().PadLeft(2, '0');
+                string tenths = e.GameTime.Tenths.ToString();
+                gametime = $"{seconds}.{tenths}";
+            }
+            txtGameTime.Text = gametime;
         }
 
         private void ControllerForm_PossessionChange(object sender, PossessionChangeEventArgs e)
         {
-            var awaySize = ArrowAwayPossession.Size;
-            var homeSize = ArrowHomePossession.Size;
-            var maxX = Math.Max(awaySize.Width, homeSize.Width);
-            var maxY = Math.Max(awaySize.Height, homeSize.Height);
-
-            if (e.Team == Team.Home)
-            {
-                ArrowAwayPossession.Size = new SizeF(0, 0);
-                ArrowHomePossession.Size = new SizeF(maxX, maxY);
-            }
-            else
-            {
-                ArrowAwayPossession.Size = new SizeF(maxX, maxY);
-                ArrowHomePossession.Size = new SizeF(0, 0);
-            }
+            //TODO: FIND A WAY TO MAKE THE ARROWS DISAPPEAR WHEN THE POSSESSION IS CHANGED
         }
 
         private void ControllerForm_TimeoutChange(object sender, TimeoutChangeEventArgs e)

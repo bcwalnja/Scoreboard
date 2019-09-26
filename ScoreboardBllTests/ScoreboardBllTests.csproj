@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="BusinessTests\ClockControllerTests.cs" />
     <Compile Include="BusinessTests\FoulControllerTests.cs" />
+    <Compile Include="BusinessTests\PossessionControllerTests.cs" />
     <Compile Include="BusinessTests\PeriodControllerTests.cs" />
     <Compile Include="BusinessTests\ScoreControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

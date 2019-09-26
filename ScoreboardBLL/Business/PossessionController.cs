@@ -7,11 +7,19 @@ namespace ScoreboardBLL
         private static readonly PossessionController _Instance = new PossessionController();
         private Team Team;
 
-        private PossessionController() { }
+        private PossessionController()
+        {
+            this.Team = Team.Home;
+        }
 
         public static PossessionController GetPossessionController()
         {
             return _Instance;
+        }
+
+        public Team GetCurrentPossession()
+        {
+            return this.Team;
         }
 
         public void ChangePossession()
