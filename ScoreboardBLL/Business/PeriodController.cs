@@ -22,11 +22,16 @@ namespace ScoreboardBLL
         public void IncrementPeriod()
         {
             _GamePeriod++;
+            if (_GamePeriod > 4)
+            {
+                _GamePeriod = 1;
+            }
         }
 
         public void ResetPeriod()
         {
-            _GamePeriod = 0;
+            _GamePeriod = 1;
+            EventMediator.GetEventMediator().OnPeriodChange(_GamePeriod);
         }
     }
 }
