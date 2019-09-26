@@ -87,5 +87,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ScoreboardBLL\ScoreboardBLL.csproj">
+      <Project>{392C7601-AAA6-4556-B04B-24B285271B32}</Project>
+      <Name>ScoreboardBLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
