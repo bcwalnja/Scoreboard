@@ -42,6 +42,9 @@
 
         public void SetGameScore(GameScore gameScore)
         {
+            gameScore.HomeScore = gameScore.HomeScore < 0 ? 0 : gameScore.HomeScore;
+            gameScore.AwayScore = gameScore.AwayScore < 0 ? 0 : gameScore.AwayScore;
+
             _CurrentScore.HomeScore = gameScore.HomeScore;
             _CurrentScore.AwayScore = gameScore.AwayScore;
             FireScoreChangedEventHandler();

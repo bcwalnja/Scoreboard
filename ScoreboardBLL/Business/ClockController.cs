@@ -17,6 +17,26 @@ namespace ScoreboardBLL
             return _Instance;
         }
 
+        public void AdjustMinutes(int adjust)
+        {
+            _GameTime.Minutes = _GameTime.Minutes + adjust;
+            SetGameTime(_GameTime);
+        }
+
+        public void AdjustSeconds(int adjust)
+        {
+            _GameTime.Seconds = _GameTime.Seconds + adjust;
+            if (_GameTime.Seconds < 0)
+            {
+                _GameTime.Seconds = 59;
+            }
+            else if (_GameTime.Seconds > 59)
+            {
+                _GameTime.Seconds = 0;
+            }
+            SetGameTime(_GameTime);
+        }
+
         public GameTime GetGameTime()
         {
             return _GameTime;
@@ -25,7 +45,9 @@ namespace ScoreboardBLL
         public void SetGameTime(GameTime gameTime)
         {
             _GameTime.Minutes = gameTime.Minutes < 0 ? 0 : gameTime.Minutes;
+            _GameTime.Minutes = gameTime.Minutes > 59 ? 59 : gameTime.Minutes;
             _GameTime.Seconds = gameTime.Seconds < 0 ? 0 : gameTime.Seconds;
+            _GameTime.Minutes = gameTime.Seconds > 59 ? 59 : gameTime.Seconds;
             _GameTime.Tenths = gameTime.Tenths < 0 ? 0 : gameTime.Tenths;
             FireGameClockChangedEvent();
         }

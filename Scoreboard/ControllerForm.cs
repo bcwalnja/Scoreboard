@@ -64,72 +64,88 @@ namespace Scoreboard
 
         private void BtnMinutesMinus_Click(object sender, EventArgs e)
         {
-
+            if (!GameClockTimer.Enabled)
+            {
+                ClockController.AdjustMinutes(-1);
+            }
         }
 
         private void BtnMinutesPlus_Click(object sender, EventArgs e)
         {
-
+            if (!GameClockTimer.Enabled)
+            {
+                ClockController.AdjustMinutes(1);
+            }
         }
 
         private void BtnSecondsMinus_Click(object sender, EventArgs e)
         {
-
+            if (!GameClockTimer.Enabled)
+            {
+                ClockController.AdjustSeconds(-1);
+            }
         }
 
         private void BtnSecondsPlus_Click(object sender, EventArgs e)
         {
-
+            if (!GameClockTimer.Enabled)
+            {
+                ClockController.AdjustSeconds(1);
+            }
         }
 
         private void BtnAwayMinus_Click(object sender, EventArgs e)
         {
-
+            ScoreController.ScoreEvent(Team.Away, -1);
         }
 
         private void BtnAwayPlus_Click(object sender, EventArgs e)
         {
-
+            ScoreController.ScoreEvent(Team.Away, 1);
         }
 
         private void BtnHomeFoulsMinus_Click(object sender, EventArgs e)
         {
-
+            FoulController.DecrementFouls(Team.Home);
         }
 
         private void BtnHomeFoulsPlus_Click(object sender, EventArgs e)
         {
-
+            FoulController.IncrementFouls(Team.Home);
         }
 
         private void BtnPeriod_Click(object sender, EventArgs e)
         {
-
+            PeriodController.IncrementPeriod();
         }
 
         private void BtnTimeoutStart_Click(object sender, EventArgs e)
         {
-
+            TimeoutTimer.Enabled = true;
         }
 
         private void BtnTimeoutPlus_Click(object sender, EventArgs e)
         {
-
+            if (!TimeoutTimer.Enabled)
+            {
+                TimeoutController.IncrementTimeoutSeconds();
+            }
         }
 
         private void BtnTimeoutClear_Click(object sender, EventArgs e)
         {
-
+            TimeoutTimer.Enabled = false;
+            TimeoutController.ResetTimeout();
         }
 
         private void BtnAwayFoulsMinus_Click(object sender, EventArgs e)
         {
-
+            FoulController.DecrementFouls(Team.Away);
         }
 
         private void BtnAwayFoulsPlus_Click(object sender, EventArgs e)
         {
-
+            FoulController.IncrementFouls(Team.Away);
         }
 
         private void ControllerForm_ScoreChange(object sender, ScoreChangeEventArgs e)
@@ -178,7 +194,17 @@ namespace Scoreboard
 
         private void ControllerForm_TimeoutChange(object sender, TimeoutChangeEventArgs e)
         {
-            
+            txtTimeout.Text = e.Seconds.ToString();
+        }
+
+        private void GameClockTimer_Tick(object sender, EventArgs e)
+        {
+            ClockController.DecrementGameTimeByTenth();
+        }
+
+        private void TimeoutTimer_Tick(object sender, EventArgs e)
+        {
+            TimeoutController.DecrementTimeout();
         }
     }
 }

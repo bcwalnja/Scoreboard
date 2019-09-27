@@ -23,6 +23,13 @@ namespace ScoreboardBLL
             {
                 Seconds = 30;
             }
+            EventMediator.GetEventMediator().OnTimeoutChange(Seconds);
+        }
+
+        public void ResetTimeout()
+        {
+            Seconds = 0;
+            EventMediator.GetEventMediator().OnTimeoutChange(Seconds);
         }
 
         public void DecrementTimeout()
