@@ -36,6 +36,8 @@ namespace Scoreboard
             mediator.TimeoutChange += ControllerForm_TimeoutChange;
             mediator.PossessionChange += ControllerForm_PossessionChange;
             mediator.PeriodChange += ControllerForm_PeriodChange;
+            mediator.GameClockExpire += ControllerForm_GameClockExpire;
+            mediator.TimeoutClockExpire += ControllerForm_TimeoutClockExpire;
         }
 
         private void InitializeControllerInstances()
@@ -228,6 +230,18 @@ namespace Scoreboard
             txtPeriod.Text = e.Period.ToString();
         }
 
+        private void ControllerForm_TimeoutClockExpire(object sender, EventArgs e)
+        {
+            TimeoutTimer.Enabled = false;
+            GameHorn.Sound();
+        }
+
+        private void ControllerForm_GameClockExpire(object sender, EventArgs e)
+        {
+            GameClockTimer.Enabled = false;
+            GameHorn.Sound();
+        }
+
         private void GameClockTimer_Tick(object sender, EventArgs e)
         {
             ClockController.DecrementGameTimeByTenth();
@@ -249,6 +263,11 @@ namespace Scoreboard
             {
                 GameClockTimer.Enabled = false;
             }
+        }
+
+        private void BtnHorn_Click(object sender, EventArgs e)
+        {
+            GameHorn.Sound();
         }
     }
 }
