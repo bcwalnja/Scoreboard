@@ -20,11 +20,24 @@ namespace Scoreboard
         private PossessionController PossessionController;
         private TimeoutController TimeoutController;
 
+        private delegate void HornSoundingDelegate(bool enabled);
+        private delegate void HornSoundedDelegate(bool enabled);
+
         public ControllerForm()
         {
             InitializeComponent();
             InitializeControllerInstances();
             SubscribeToEvents();
+        }
+
+        private void InitializeControllerInstances()
+        {
+            this.ScoreController = ScoreboardBLL.ScoreController.GetScoreController();
+            this.FoulController = ScoreboardBLL.FoulController.GetFoulController();
+            this.ClockController = ScoreboardBLL.ClockController.GetClockController();
+            this.PeriodController = ScoreboardBLL.PeriodController.GetPeriodController();
+            this.PossessionController = ScoreboardBLL.PossessionController.GetPossessionController();
+            this.TimeoutController = ScoreboardBLL.TimeoutController.GetTimeoutController();
         }
 
         private void SubscribeToEvents()
@@ -38,16 +51,8 @@ namespace Scoreboard
             mediator.PeriodChange += ControllerForm_PeriodChange;
             mediator.GameClockExpire += ControllerForm_GameClockExpire;
             mediator.TimeoutClockExpire += ControllerForm_TimeoutClockExpire;
-        }
-
-        private void InitializeControllerInstances()
-        {
-            this.ScoreController = ScoreboardBLL.ScoreController.GetScoreController();
-            this.FoulController = ScoreboardBLL.FoulController.GetFoulController();
-            this.ClockController = ScoreboardBLL.ClockController.GetClockController();
-            this.PeriodController = ScoreboardBLL.PeriodController.GetPeriodController();
-            this.PossessionController = ScoreboardBLL.PossessionController.GetPossessionController();
-            this.TimeoutController = ScoreboardBLL.TimeoutController.GetTimeoutController();
+            mediator.GameClockSounding += ControllerForm_GameClockSounding;
+            mediator.GameClockSounded += ControllerForm_GameClockSounded;
         }
 
         private void BtnHomeMinus_Click(object sender, EventArgs e)
@@ -240,6 +245,29 @@ namespace Scoreboard
         {
             GameClockTimer.Enabled = false;
             GameHorn.Sound();
+        }
+
+        private void ControllerForm_GameClockSounding(object sender, EventArgs e)
+        {
+            SetBtnHornEnabledTo(false);
+        }
+
+        private void ControllerForm_GameClockSounded(object sender, EventArgs e)
+        {
+            SetBtnHornEnabledTo(true);
+        }
+
+        private void SetBtnHornEnabledTo(bool enabled)
+        {
+            if (btnHorn.InvokeRequired)
+            {
+                HornSoundedDelegate del = new HornSoundedDelegate(SetBtnHornEnabledTo);
+                this.BeginInvoke(del, enabled);
+            }
+            else
+            {
+                btnHorn.Enabled = enabled; 
+            }
         }
 
         private void GameClockTimer_Tick(object sender, EventArgs e)

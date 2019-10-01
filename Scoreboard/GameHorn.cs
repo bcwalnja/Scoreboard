@@ -21,9 +21,11 @@ namespace ScoreboardBLL
 
                 Task.Run(() =>
                 {
+                    EventMediator.GetEventMediator().OnGameClockSounding();
                     gameHorn.Play();
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
                     gameHorn.Stop();
+                    EventMediator.GetEventMediator().OnGameClockSounded();
                 });
             }
             catch (System.Exception)

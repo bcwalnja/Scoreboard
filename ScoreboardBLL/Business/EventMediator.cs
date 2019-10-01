@@ -70,5 +70,19 @@ namespace ScoreboardBLL
         {
             TimeoutClockExpire?.Invoke(this, new EventArgs());
         }
+
+        public event EventHandler<EventArgs> GameClockSounding;
+
+        public void OnGameClockSounding()
+        {
+            GameClockSounding?.Invoke(this, new EventArgs());
+        }
+
+        public event EventHandler<EventArgs> GameClockSounded;
+
+        public void OnGameClockSounded()
+        {
+            GameClockSounded?.Invoke(this, new EventArgs());
+        }
     }
 }
