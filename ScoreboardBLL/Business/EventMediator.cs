@@ -56,5 +56,19 @@ namespace ScoreboardBLL
         {
             FoulsChange?.Invoke(this, new FoulChangeEventArgs(gameFouls));
         }
+
+        public event EventHandler<EventArgs> GameClockExpire;
+
+        public void OnGameClockExpire()
+        {
+            GameClockExpire?.Invoke(this, new EventArgs());
+        }
+
+        public event EventHandler<EventArgs> TimeoutClockExpire;
+
+        public void OnTimeoutClockExpire()
+        {
+            TimeoutClockExpire?.Invoke(this, new EventArgs());
+        }
     }
 }

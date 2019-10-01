@@ -26,6 +26,7 @@ namespace ScoreboardBLL
             {
                 _GamePeriod = 1;
             }
+            EventMediator.GetEventMediator().OnPeriodChange(_GamePeriod);
         }
 
         public void ResetPeriod()

@@ -35,6 +35,7 @@ namespace Scoreboard
             mediator.ScoreChange += ControllerForm_ScoreChange;
             mediator.TimeoutChange += ControllerForm_TimeoutChange;
             mediator.PossessionChange += ControllerForm_PossessionChange;
+            mediator.PeriodChange += ControllerForm_PeriodChange;
         }
 
         private void InitializeControllerInstances()
@@ -156,8 +157,33 @@ namespace Scoreboard
 
         private void ControllerForm_FoulsChange(object sender, FoulChangeEventArgs e)
         {
-            txtHomeFouls.Text = e.GameFouls.FoulList.Where(x => x.Team == Team.Home).Count().ToString();
-            txtAwayFouls.Text = e.GameFouls.FoulList.Where(x => x.Team == Team.Away).Count().ToString();
+            int homefouls = e.GameFouls.FoulList.Where(x => x.Team == Team.Home).Count();
+            int awayfouls = e.GameFouls.FoulList.Where(x => x.Team == Team.Away).Count();
+
+            txtHomeFouls.Text = homefouls.ToString();
+            txtAwayFouls.Text = awayfouls.ToString();
+
+            lightHomeBonus.StateIndex = 0;
+            lightHomeDoubleBonus.StateIndex = 0;
+            lightAwayBonus.StateIndex = 0;
+            lightAwayDoubleBonus.StateIndex = 0;
+
+            if (homefouls > 6)
+            {
+                lightHomeBonus.StateIndex = 3;
+            }
+            if (homefouls > 9)
+            {
+                lightHomeDoubleBonus.StateIndex = 3;
+            }
+            if (awayfouls > 6)
+            {
+                lightAwayBonus.StateIndex = 3;
+            }
+            if (awayfouls > 9)
+            {
+                lightAwayDoubleBonus.StateIndex = 3;
+            }
         }
 
         private void ControllerForm_ClockChange(object sender, ClockChangeEventArgs e)
@@ -183,11 +209,11 @@ namespace Scoreboard
             if (e.Team == Team.Home)
             {
                 lblAwayPossession.Text = string.Empty;
-                lblHomePossession.Text = "<";
+                lblHomePossession.Text = "◄";
             }
             else
             {
-                lblAwayPossession.Text = ">";
+                lblAwayPossession.Text = "►";
                 lblHomePossession.Text = string.Empty;
             }
         }
@@ -195,6 +221,11 @@ namespace Scoreboard
         private void ControllerForm_TimeoutChange(object sender, TimeoutChangeEventArgs e)
         {
             txtTimeout.Text = e.Seconds.ToString();
+        }
+
+        private void ControllerForm_PeriodChange(object sender, PeriodChangeEventArgs e)
+        {
+            txtPeriod.Text = e.Period.ToString();
         }
 
         private void GameClockTimer_Tick(object sender, EventArgs e)
@@ -205,6 +236,19 @@ namespace Scoreboard
         private void TimeoutTimer_Tick(object sender, EventArgs e)
         {
             TimeoutController.DecrementTimeout();
+        }
+
+        private void BtnClock_Click(object sender, EventArgs e)
+        {
+            var gametime = ClockController.GetGameTime();
+            if (gametime.Minutes > 0 || gametime.Seconds > 0 || gametime.Tenths > 0)
+            {
+                GameClockTimer.Enabled = !GameClockTimer.Enabled;
+            }
+            else
+            {
+                GameClockTimer.Enabled = false;
+            }
         }
     }
 }

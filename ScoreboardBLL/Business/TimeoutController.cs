@@ -35,11 +35,10 @@ namespace ScoreboardBLL
         public void DecrementTimeout()
         {
             Seconds--;
-            if (Seconds < 0)
+            if (Seconds <= 0)
             {
-                //TIMEOUT IS OVER
                 Seconds = 0;
-                //TODO: Fire "game clock expired"
+                EventMediator.GetEventMediator().OnTimeoutClockExpire();
             }
             EventMediator.GetEventMediator().OnTimeoutChange(Seconds);
         }

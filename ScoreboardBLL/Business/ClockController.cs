@@ -19,13 +19,17 @@ namespace ScoreboardBLL
 
         public void AdjustMinutes(int adjust)
         {
-            _GameTime.Minutes = _GameTime.Minutes + adjust;
-            SetGameTime(_GameTime);
+            if ((adjust > 0 && _GameTime.Minutes < 59)
+                || (adjust < 0 && _GameTime.Minutes > 0))
+            {
+                _GameTime.Minutes += adjust; 
+            }
+            FireGameClockChangedEvent();
         }
 
         public void AdjustSeconds(int adjust)
         {
-            _GameTime.Seconds = _GameTime.Seconds + adjust;
+            _GameTime.Seconds += adjust;
             if (_GameTime.Seconds < 0)
             {
                 _GameTime.Seconds = 59;
@@ -34,7 +38,7 @@ namespace ScoreboardBLL
             {
                 _GameTime.Seconds = 0;
             }
-            SetGameTime(_GameTime);
+            FireGameClockChangedEvent();
         }
 
         public GameTime GetGameTime()
@@ -49,6 +53,7 @@ namespace ScoreboardBLL
             _GameTime.Seconds = gameTime.Seconds < 0 ? 0 : gameTime.Seconds;
             _GameTime.Minutes = gameTime.Seconds > 59 ? 59 : gameTime.Seconds;
             _GameTime.Tenths = gameTime.Tenths < 0 ? 0 : gameTime.Tenths;
+            _GameTime.Tenths = gameTime.Tenths > 9 ? 9 : gameTime.Tenths;
             FireGameClockChangedEvent();
         }
 
@@ -72,12 +77,11 @@ namespace ScoreboardBLL
             }
             if (_GameTime.Minutes < 0)
             {
-                //GAME IS OVER
                 _GameTime.Tenths = 0;
                 _GameTime.Seconds = 0;
                 _GameTime.Minutes = 0;
 
-                //TODO: Fire "game clock expired"
+                EventMediator.GetEventMediator().OnGameClockExpire();
             }
             FireGameClockChangedEvent();
         }
