@@ -1,12 +1,5 @@
 ﻿using ScoreboardBLL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Scoreboard
@@ -284,6 +277,13 @@ namespace Scoreboard
         private void BtnHorn_Click(object sender, EventArgs e)
         {
             GameHorn.Sound();
+        }
+
+        private void btnShowDisplay_Click(object sender, EventArgs e)
+        {
+            var display = new DisplayForm();
+            display.Show();
+            display.BringToFront();
         }
     }
 }
