@@ -71,6 +71,7 @@
             DevExpress.XtraLayout.RowDefinition rowDefinition10 = new DevExpress.XtraLayout.RowDefinition();
             DevExpress.XtraLayout.RowDefinition rowDefinition11 = new DevExpress.XtraLayout.RowDefinition();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnHorn = new DevExpress.XtraEditors.SimpleButton();
             this.lblHomePossession = new DevExpress.XtraEditors.LabelControl();
             this.lblAwayPossession = new DevExpress.XtraEditors.LabelControl();
             this.btnPossession = new DevExpress.XtraEditors.SimpleButton();
@@ -173,6 +174,7 @@
             this.layoutControlItem31 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem40 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -194,8 +196,6 @@
             this.emptySpaceItem28 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.GameClockTimer = new System.Windows.Forms.Timer(this.components);
             this.TimeoutTimer = new System.Windows.Forms.Timer(this.components);
-            this.btnHorn = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAwayFouls)).BeginInit();
@@ -261,6 +261,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem40)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
@@ -280,7 +281,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem28)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -333,6 +333,18 @@
             this.layoutControl1.Size = new System.Drawing.Size(857, 481);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // btnHorn
+            // 
+            this.btnHorn.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHorn.Appearance.Options.UseFont = true;
+            this.btnHorn.Location = new System.Drawing.Point(505, 241);
+            this.btnHorn.Name = "btnHorn";
+            this.btnHorn.Size = new System.Drawing.Size(76, 34);
+            this.btnHorn.StyleController = this.layoutControl1;
+            this.btnHorn.TabIndex = 41;
+            this.btnHorn.Text = "HORN";
+            this.btnHorn.Click += new System.EventHandler(this.BtnHorn_Click);
             // 
             // lblHomePossession
             // 
@@ -1638,6 +1650,19 @@
             this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem12.TextVisible = false;
             // 
+            // layoutControlItem19
+            // 
+            this.layoutControlItem19.Control = this.btnHorn;
+            this.layoutControlItem19.Location = new System.Drawing.Point(463, 217);
+            this.layoutControlItem19.MinSize = new System.Drawing.Size(80, 26);
+            this.layoutControlItem19.Name = "layoutControlItem19";
+            this.layoutControlItem19.OptionsTableLayoutItem.ColumnIndex = 8;
+            this.layoutControlItem19.OptionsTableLayoutItem.RowIndex = 6;
+            this.layoutControlItem19.Size = new System.Drawing.Size(80, 38);
+            this.layoutControlItem19.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem19.TextVisible = false;
+            // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
@@ -1796,31 +1821,6 @@
             this.TimeoutTimer.Interval = 1000;
             this.TimeoutTimer.Tick += new System.EventHandler(this.TimeoutTimer_Tick);
             // 
-            // btnHorn
-            // 
-            this.btnHorn.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHorn.Appearance.Options.UseFont = true;
-            this.btnHorn.Location = new System.Drawing.Point(505, 241);
-            this.btnHorn.Name = "btnHorn";
-            this.btnHorn.Size = new System.Drawing.Size(76, 34);
-            this.btnHorn.StyleController = this.layoutControl1;
-            this.btnHorn.TabIndex = 41;
-            this.btnHorn.Text = "HORN";
-            this.btnHorn.Click += new System.EventHandler(this.BtnHorn_Click);
-            // 
-            // layoutControlItem19
-            // 
-            this.layoutControlItem19.Control = this.btnHorn;
-            this.layoutControlItem19.Location = new System.Drawing.Point(463, 217);
-            this.layoutControlItem19.MinSize = new System.Drawing.Size(80, 26);
-            this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.OptionsTableLayoutItem.ColumnIndex = 8;
-            this.layoutControlItem19.OptionsTableLayoutItem.RowIndex = 6;
-            this.layoutControlItem19.Size = new System.Drawing.Size(80, 38);
-            this.layoutControlItem19.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem19.TextVisible = false;
-            // 
             // ControllerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1894,6 +1894,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem40)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
@@ -1913,7 +1914,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem28)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
             this.ResumeLayout(false);
 
         }

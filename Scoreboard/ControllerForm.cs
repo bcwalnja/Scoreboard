@@ -20,8 +20,7 @@ namespace Scoreboard
         private PossessionController PossessionController;
         private TimeoutController TimeoutController;
 
-        private delegate void HornSoundingDelegate(bool enabled);
-        private delegate void HornSoundedDelegate(bool enabled);
+        private delegate void HornDelegate(bool enabled);
 
         public ControllerForm()
         {
@@ -261,7 +260,7 @@ namespace Scoreboard
         {
             if (btnHorn.InvokeRequired)
             {
-                HornSoundedDelegate del = new HornSoundedDelegate(SetBtnHornEnabledTo);
+                HornDelegate del = new HornDelegate(SetBtnHornEnabledTo);
                 this.BeginInvoke(del, enabled);
             }
             else
