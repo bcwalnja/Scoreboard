@@ -163,33 +163,22 @@ namespace Scoreboard
 
         private void ControllerForm_FoulsChange(object sender, FoulChangeEventArgs e)
         {
-            int homefouls = e.GameFouls.Where(x => x.Team == Team.Home).Count();
-            int awayfouls = e.GameFouls.Where(x => x.Team == Team.Away).Count();
+            SetFoulIndicators(e);
+            SetFoulBonusIndicators(e);
+        }
 
-            txtHomeFouls.Text = homefouls.ToString();
-            txtAwayFouls.Text = awayfouls.ToString();
+        private void SetFoulBonusIndicators(FoulChangeEventArgs e)
+        {
+            lightHomeBonus.StateIndex = e.GameFouls.HomeFouls() > 6 ? 3 : 0;
+            lightHomeDoubleBonus.StateIndex = e.GameFouls.HomeFouls() > 9 ? 3 : 0;
+            lightAwayBonus.StateIndex = e.GameFouls.AwayFouls() > 6 ? 3 : 0;
+            lightAwayDoubleBonus.StateIndex = e.GameFouls.AwayFouls() > 9 ? 3 : 0;
+        }
 
-            lightHomeBonus.StateIndex = 0;
-            lightHomeDoubleBonus.StateIndex = 0;
-            lightAwayBonus.StateIndex = 0;
-            lightAwayDoubleBonus.StateIndex = 0;
-
-            if (homefouls > 6)
-            {
-                lightHomeBonus.StateIndex = 3;
-            }
-            if (homefouls > 9)
-            {
-                lightHomeDoubleBonus.StateIndex = 3;
-            }
-            if (awayfouls > 6)
-            {
-                lightAwayBonus.StateIndex = 3;
-            }
-            if (awayfouls > 9)
-            {
-                lightAwayDoubleBonus.StateIndex = 3;
-            }
+        private void SetFoulIndicators(FoulChangeEventArgs e)
+        {
+            txtHomeFouls.Text = e.GameFouls.HomeFouls().ToString();
+            txtAwayFouls.Text = e.GameFouls.AwayFouls().ToString();
         }
 
         private void ControllerForm_ClockChange(object sender, ClockChangeEventArgs e)
