@@ -49,10 +49,5 @@ namespace ScoreboardBLL
         {
             return fouls.AwayFouls() > 9;
         }
-
-        public static void Add(this System.Collections.Generic.IEnumerable<Foul> fouls, Foul foul)
-        {
-            fouls = fouls.Concat()
-        }
     }
 }

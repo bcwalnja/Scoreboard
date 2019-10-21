@@ -10,7 +10,7 @@ namespace ScoreboardBLL
 
         private FoulController()
         {
-            _GameFouls = new GameFouls();
+            _GameFouls = new GameFouls(new List<Foul>());
         }
 
         public static FoulController GetFoulController()
@@ -30,7 +30,7 @@ namespace ScoreboardBLL
 
         public void IncrementFouls(Team team)
         {
-            _GameFouls.(new Foul(team));
+            _GameFouls.Add(new Foul(team));
             EventMediator.GetEventMediator().OnFoulsChange(_GameFouls);
         }
 

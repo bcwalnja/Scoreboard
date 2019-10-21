@@ -53,11 +53,12 @@ namespace ScoreboardBllTests
         {
             //Arrange //Act
             _foulController.ResetAllFouls();
+            var fouls = _foulController.GetAllFouls();
             _foulController.IncrementFouls(Team.Away);
 
             //Assert
-            Assert.AreEqual(0, _foulController.GetTeamFouls(Team.Home));
-            Assert.AreEqual(1, _foulController.GetTeamFouls(Team.Away));
+            Assert.AreEqual(0, fouls.HomeFouls());
+            Assert.AreEqual(1, fouls.AwayFouls());
         }
 
         [TestMethod]
@@ -65,6 +66,7 @@ namespace ScoreboardBllTests
         {
             //Arrange //Act
             _foulController.ResetAllFouls();
+            var fouls = _foulController.GetAllFouls();
             _foulController.IncrementFouls(Team.Away);
             _foulController.IncrementFouls(Team.Away);
             _foulController.IncrementFouls(Team.Away);
@@ -72,8 +74,8 @@ namespace ScoreboardBllTests
             _foulController.DecrementFouls(Team.Away);
 
             //Assert
-            Assert.AreEqual(0, _foulController.GetTeamFouls(Team.Home));
-            Assert.AreEqual(2, _foulController.GetTeamFouls(Team.Away));
+            Assert.AreEqual(0, fouls.HomeFouls());
+            Assert.AreEqual(2, fouls.AwayFouls());
         }
 
         [TestMethod]
@@ -81,11 +83,12 @@ namespace ScoreboardBllTests
         {
             //Arrange //Act
             _foulController.ResetAllFouls();
+            var fouls = _foulController.GetAllFouls();
             _foulController.DecrementFouls(Team.Away);
 
             //Assert
-            Assert.AreEqual(0, _foulController.GetTeamFouls(Team.Home));
-            Assert.AreEqual(0, _foulController.GetTeamFouls(Team.Away));
+            Assert.AreEqual(0, fouls.HomeFouls());
+            Assert.AreEqual(0, fouls.AwayFouls());
         }
 
         [TestMethod]

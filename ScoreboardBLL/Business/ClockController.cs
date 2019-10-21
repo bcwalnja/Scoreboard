@@ -48,12 +48,13 @@ namespace ScoreboardBLL
 
         public void SetGameTime(GameTime gameTime)
         {
-            _GameTime.Minutes = gameTime.Minutes < 0 ? 0 : gameTime.Minutes;
-            _GameTime.Minutes = gameTime.Minutes > 59 ? 59 : gameTime.Minutes;
-            _GameTime.Seconds = gameTime.Seconds < 0 ? 0 : gameTime.Seconds;
-            _GameTime.Minutes = gameTime.Seconds > 59 ? 59 : gameTime.Seconds;
-            _GameTime.Tenths = gameTime.Tenths < 0 ? 0 : gameTime.Tenths;
-            _GameTime.Tenths = gameTime.Tenths > 9 ? 9 : gameTime.Tenths;
+            gameTime.Minutes = gameTime.Minutes < 0 ? 0 : gameTime.Minutes;
+            gameTime.Minutes = gameTime.Minutes > 59 ? 59 : gameTime.Minutes;
+            gameTime.Seconds = gameTime.Seconds < 0 ? 0 : gameTime.Seconds;
+            gameTime.Seconds = gameTime.Seconds > 59 ? 59 : gameTime.Seconds;
+            gameTime.Tenths = gameTime.Tenths < 0 ? 0 : gameTime.Tenths;
+            gameTime.Tenths = gameTime.Tenths > 9 ? 9 : gameTime.Tenths;
+            _GameTime = gameTime;
             FireGameClockChangedEvent();
         }
 

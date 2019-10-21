@@ -163,8 +163,8 @@ namespace Scoreboard
 
         private void ControllerForm_FoulsChange(object sender, FoulChangeEventArgs e)
         {
-            int homefouls = e.GameFouls.FoulList.Where(x => x.Team == Team.Home).Count();
-            int awayfouls = e.GameFouls.FoulList.Where(x => x.Team == Team.Away).Count();
+            int homefouls = e.GameFouls.Where(x => x.Team == Team.Home).Count();
+            int awayfouls = e.GameFouls.Where(x => x.Team == Team.Away).Count();
 
             txtHomeFouls.Text = homefouls.ToString();
             txtAwayFouls.Text = awayfouls.ToString();

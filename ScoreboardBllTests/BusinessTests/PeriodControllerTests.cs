@@ -59,7 +59,7 @@ namespace ScoreboardBllTests
             _periodController.ResetPeriod();
 
             //Assert
-            Assert.AreEqual(0, _periodController.GetGamePeriod());
+            Assert.AreEqual(1, _periodController.GetGamePeriod());
         }
 
         [TestMethod]
@@ -70,10 +70,15 @@ namespace ScoreboardBllTests
 
             //Act
             _periodController.ResetPeriod();
+            Assert.AreEqual(1, _periodController.GetGamePeriod());
             _periodController.IncrementPeriod();
-
-            //Assert
-            Assert.AreEqual(0, _periodController.GetGamePeriod());
+            Assert.AreEqual(2, _periodController.GetGamePeriod());
+            _periodController.IncrementPeriod();
+            Assert.AreEqual(3, _periodController.GetGamePeriod());
+            _periodController.IncrementPeriod();
+            Assert.AreEqual(4, _periodController.GetGamePeriod());
+            _periodController.IncrementPeriod();
+            Assert.AreEqual(1, _periodController.GetGamePeriod());
         }
     }
 }
