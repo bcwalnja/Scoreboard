@@ -25,28 +25,28 @@ namespace ScoreboardBLL
 
         public int GetTeamFouls(Team team)
         {
-            return _GameFouls.FoulList.Where(x => x.Team == team).Count();
+            return _GameFouls.Where(x => x.Team == team).Count();
         }
 
         public void IncrementFouls(Team team)
         {
-            _GameFouls.FoulList.Add(new Foul(team));
+            _GameFouls.(new Foul(team));
             EventMediator.GetEventMediator().OnFoulsChange(_GameFouls);
         }
 
         public void DecrementFouls(Team team)
         {
-            Foul foul = _GameFouls.FoulList.FirstOrDefault(x => x.Team == team);
+            Foul foul = _GameFouls.FirstOrDefault(x => x.Team == team);
             if (foul != null)
             {
-                _GameFouls.FoulList.Remove(foul);
+                _GameFouls.Remove(foul);
             }
             EventMediator.GetEventMediator().OnFoulsChange(_GameFouls);
         }
 
         public void ResetAllFouls()
         {
-            _GameFouls.FoulList.Clear();
+            _GameFouls.Clear();
             EventMediator.GetEventMediator().OnFoulsChange(_GameFouls);
         }
     }
