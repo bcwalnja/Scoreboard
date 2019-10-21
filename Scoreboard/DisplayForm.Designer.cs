@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState33 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState34 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState35 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState36 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState37 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState38 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState39 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState40 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState41 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState42 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState43 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState44 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState45 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState46 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState47 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
-            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState48 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState49 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState50 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState51 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState52 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState53 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState54 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState55 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState56 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState57 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState58 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState59 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState60 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState61 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState62 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState63 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
+            DevExpress.XtraGauges.Core.Model.IndicatorState indicatorState64 = new DevExpress.XtraGauges.Core.Model.IndicatorState();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gaugeControl11 = new DevExpress.XtraGauges.Win.GaugeControl();
@@ -127,6 +127,8 @@
             this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem12 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem14 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.emptySpaceItem18 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.emptySpaceItem21 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGameTime)).BeginInit();
@@ -192,6 +194,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem21)).BeginInit();
             this.SuspendLayout();
             // 
             // Root
@@ -238,7 +242,9 @@
             this.emptySpaceItem2,
             this.emptySpaceItem7,
             this.emptySpaceItem12,
-            this.emptySpaceItem14});
+            this.emptySpaceItem14,
+            this.emptySpaceItem18,
+            this.emptySpaceItem21});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1230, 701);
             this.Root.TextVisible = false;
@@ -423,7 +429,7 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.White;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(659, 484);
+            this.labelControl3.Location = new System.Drawing.Point(649, 484);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(189, 59);
             this.labelControl3.StyleController = this.layoutControl1;
@@ -552,19 +558,19 @@
             this.lightHomeDoubleBonus.Name = "stateIndicatorComponent1";
             this.lightHomeDoubleBonus.Size = new System.Drawing.SizeF(200F, 200F);
             this.lightHomeDoubleBonus.StateIndex = 0;
-            indicatorState33.Name = "State1";
-            indicatorState33.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
-            indicatorState34.Name = "State2";
-            indicatorState34.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
-            indicatorState35.Name = "State3";
-            indicatorState35.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
-            indicatorState36.Name = "State4";
-            indicatorState36.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
+            indicatorState49.Name = "State1";
+            indicatorState49.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
+            indicatorState50.Name = "State2";
+            indicatorState50.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
+            indicatorState51.Name = "State3";
+            indicatorState51.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
+            indicatorState52.Name = "State4";
+            indicatorState52.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
             this.lightHomeDoubleBonus.States.AddRange(new DevExpress.XtraGauges.Core.Model.IIndicatorState[] {
-            indicatorState33,
-            indicatorState34,
-            indicatorState35,
-            indicatorState36});
+            indicatorState49,
+            indicatorState50,
+            indicatorState51,
+            indicatorState52});
             // 
             // gaugeControl6
             // 
@@ -591,19 +597,19 @@
             this.lightHomeBonus.Name = "stateIndicatorComponent1";
             this.lightHomeBonus.Size = new System.Drawing.SizeF(200F, 200F);
             this.lightHomeBonus.StateIndex = 0;
-            indicatorState37.Name = "State1";
-            indicatorState37.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
-            indicatorState38.Name = "State2";
-            indicatorState38.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
-            indicatorState39.Name = "State3";
-            indicatorState39.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
-            indicatorState40.Name = "State4";
-            indicatorState40.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
+            indicatorState53.Name = "State1";
+            indicatorState53.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
+            indicatorState54.Name = "State2";
+            indicatorState54.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
+            indicatorState55.Name = "State3";
+            indicatorState55.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
+            indicatorState56.Name = "State4";
+            indicatorState56.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
             this.lightHomeBonus.States.AddRange(new DevExpress.XtraGauges.Core.Model.IIndicatorState[] {
-            indicatorState37,
-            indicatorState38,
-            indicatorState39,
-            indicatorState40});
+            indicatorState53,
+            indicatorState54,
+            indicatorState55,
+            indicatorState56});
             // 
             // gaugeControl111
             // 
@@ -630,19 +636,19 @@
             this.lightAwayDoubleBonus.Name = "stateIndicatorComponent1";
             this.lightAwayDoubleBonus.Size = new System.Drawing.SizeF(200F, 200F);
             this.lightAwayDoubleBonus.StateIndex = 0;
-            indicatorState41.Name = "State1";
-            indicatorState41.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
-            indicatorState42.Name = "State2";
-            indicatorState42.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
-            indicatorState43.Name = "State3";
-            indicatorState43.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
-            indicatorState44.Name = "State4";
-            indicatorState44.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
+            indicatorState57.Name = "State1";
+            indicatorState57.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
+            indicatorState58.Name = "State2";
+            indicatorState58.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
+            indicatorState59.Name = "State3";
+            indicatorState59.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
+            indicatorState60.Name = "State4";
+            indicatorState60.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
             this.lightAwayDoubleBonus.States.AddRange(new DevExpress.XtraGauges.Core.Model.IIndicatorState[] {
-            indicatorState41,
-            indicatorState42,
-            indicatorState43,
-            indicatorState44});
+            indicatorState57,
+            indicatorState58,
+            indicatorState59,
+            indicatorState60});
             // 
             // gaugeControl10
             // 
@@ -669,19 +675,19 @@
             this.lightAwayBonus.Name = "stateIndicatorComponent1";
             this.lightAwayBonus.Size = new System.Drawing.SizeF(200F, 200F);
             this.lightAwayBonus.StateIndex = 0;
-            indicatorState45.Name = "State1";
-            indicatorState45.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
-            indicatorState46.Name = "State2";
-            indicatorState46.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
-            indicatorState47.Name = "State3";
-            indicatorState47.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
-            indicatorState48.Name = "State4";
-            indicatorState48.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
+            indicatorState61.Name = "State1";
+            indicatorState61.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight1;
+            indicatorState62.Name = "State2";
+            indicatorState62.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight2;
+            indicatorState63.Name = "State3";
+            indicatorState63.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight3;
+            indicatorState64.Name = "State4";
+            indicatorState64.ShapeType = DevExpress.XtraGauges.Core.Model.StateIndicatorShapeType.ElectricLight4;
             this.lightAwayBonus.States.AddRange(new DevExpress.XtraGauges.Core.Model.IIndicatorState[] {
-            indicatorState45,
-            indicatorState46,
-            indicatorState47,
-            indicatorState48});
+            indicatorState61,
+            indicatorState62,
+            indicatorState63,
+            indicatorState64});
             // 
             // gaugeControl4
             // 
@@ -751,9 +757,9 @@
             this.gaugeControl9.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gaugeControl9.Gauges.AddRange(new DevExpress.XtraGauges.Base.IGauge[] {
             this.txtTimeout});
-            this.gaugeControl9.Location = new System.Drawing.Point(659, 547);
+            this.gaugeControl9.Location = new System.Drawing.Point(649, 547);
             this.gaugeControl9.Name = "gaugeControl9";
-            this.gaugeControl9.Size = new System.Drawing.Size(189, 131);
+            this.gaugeControl9.Size = new System.Drawing.Size(199, 131);
             this.gaugeControl9.TabIndex = 19;
             // 
             // txtTimeout
@@ -762,7 +768,7 @@
             this.txtTimeout.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FF5050");
             this.txtTimeout.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent9});
-            this.txtTimeout.Bounds = new System.Drawing.Rectangle(6, 6, 177, 119);
+            this.txtTimeout.Bounds = new System.Drawing.Rectangle(6, 6, 187, 119);
             this.txtTimeout.DigitCount = 2;
             this.txtTimeout.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
             this.txtTimeout.Name = "txtTimeout";
@@ -785,7 +791,7 @@
             this.txtPeriod});
             this.gaugeControl8.Location = new System.Drawing.Point(379, 547);
             this.gaugeControl8.Name = "gaugeControl8";
-            this.gaugeControl8.Size = new System.Drawing.Size(151, 131);
+            this.gaugeControl8.Size = new System.Drawing.Size(161, 131);
             this.gaugeControl8.TabIndex = 17;
             // 
             // txtPeriod
@@ -794,7 +800,7 @@
             this.txtPeriod.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FFFF64");
             this.txtPeriod.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent10});
-            this.txtPeriod.Bounds = new System.Drawing.Rectangle(6, 6, 139, 119);
+            this.txtPeriod.Bounds = new System.Drawing.Rectangle(6, 6, 149, 119);
             this.txtPeriod.DigitCount = 1;
             this.txtPeriod.DisplayMode = DevExpress.XtraGauges.Core.Model.DigitalGaugeDisplayMode.SevenSegment;
             this.txtPeriod.Name = "txtPeriod";
@@ -860,14 +866,14 @@
             // 
             this.layoutControlItem16.Control = this.gaugeControl9;
             this.layoutControlItem16.CustomizationFormText = "layoutControlItem16";
-            this.layoutControlItem16.Location = new System.Drawing.Point(647, 535);
+            this.layoutControlItem16.Location = new System.Drawing.Point(637, 535);
             this.layoutControlItem16.MinSize = new System.Drawing.Size(130, 130);
             this.layoutControlItem16.Name = "layoutControlItem16";
             this.layoutControlItem16.OptionsTableLayoutItem.ColumnIndex = 6;
             this.layoutControlItem16.OptionsTableLayoutItem.ColumnSpan = 2;
             this.layoutControlItem16.OptionsTableLayoutItem.RowIndex = 7;
             this.layoutControlItem16.OptionsTableLayoutItem.RowSpan = 3;
-            this.layoutControlItem16.Size = new System.Drawing.Size(193, 135);
+            this.layoutControlItem16.Size = new System.Drawing.Size(203, 135);
             this.layoutControlItem16.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem16.TextVisible = false;
@@ -875,7 +881,7 @@
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.labelControl3;
-            this.layoutControlItem11.Location = new System.Drawing.Point(647, 472);
+            this.layoutControlItem11.Location = new System.Drawing.Point(637, 472);
             this.layoutControlItem11.Name = "layoutControlItem11";
             this.layoutControlItem11.Size = new System.Drawing.Size(193, 63);
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
@@ -891,7 +897,7 @@
             this.layoutControlItem15.OptionsTableLayoutItem.ColumnIndex = 4;
             this.layoutControlItem15.OptionsTableLayoutItem.RowIndex = 7;
             this.layoutControlItem15.OptionsTableLayoutItem.RowSpan = 2;
-            this.layoutControlItem15.Size = new System.Drawing.Size(155, 135);
+            this.layoutControlItem15.Size = new System.Drawing.Size(165, 135);
             this.layoutControlItem15.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem15.TextVisible = false;
@@ -900,9 +906,9 @@
             // 
             this.emptySpaceItem15.AllowHotTrack = false;
             this.emptySpaceItem15.BestFitWeight = 10;
-            this.emptySpaceItem15.Location = new System.Drawing.Point(522, 472);
+            this.emptySpaceItem15.Location = new System.Drawing.Point(532, 472);
             this.emptySpaceItem15.Name = "emptySpaceItem15";
-            this.emptySpaceItem15.Size = new System.Drawing.Size(125, 198);
+            this.emptySpaceItem15.Size = new System.Drawing.Size(105, 198);
             this.emptySpaceItem15.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem12
@@ -1200,6 +1206,24 @@
             this.emptySpaceItem14.Size = new System.Drawing.Size(10, 121);
             this.emptySpaceItem14.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // emptySpaceItem18
+            // 
+            this.emptySpaceItem18.AllowHotTrack = false;
+            this.emptySpaceItem18.BestFitWeight = 1;
+            this.emptySpaceItem18.Location = new System.Drawing.Point(830, 472);
+            this.emptySpaceItem18.Name = "emptySpaceItem18";
+            this.emptySpaceItem18.Size = new System.Drawing.Size(10, 63);
+            this.emptySpaceItem18.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // emptySpaceItem21
+            // 
+            this.emptySpaceItem21.AllowHotTrack = false;
+            this.emptySpaceItem21.BestFitWeight = 1;
+            this.emptySpaceItem21.Location = new System.Drawing.Point(522, 472);
+            this.emptySpaceItem21.Name = "emptySpaceItem21";
+            this.emptySpaceItem21.Size = new System.Drawing.Size(10, 63);
+            this.emptySpaceItem21.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // DisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1277,6 +1301,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem21)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1366,5 +1392,7 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem7;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem12;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem14;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem18;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem21;
     }
 }
