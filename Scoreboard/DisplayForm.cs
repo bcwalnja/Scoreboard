@@ -1,5 +1,6 @@
 ﻿using ScoreboardBLL;
 using System;
+using System.Windows.Forms;
 
 namespace Scoreboard
 {
