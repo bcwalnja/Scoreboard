@@ -1827,7 +1827,7 @@
             this.btnShowDisplay.StyleController = this.layoutControl1;
             this.btnShowDisplay.TabIndex = 42;
             this.btnShowDisplay.Text = "Show Scoreboard";
-            this.btnShowDisplay.Click += new System.EventHandler(this.btnShowDisplay_Click);
+            this.btnShowDisplay.Click += new System.EventHandler(this.BtnShowDisplay_Click);
             // 
             // layoutControlItem41
             // 

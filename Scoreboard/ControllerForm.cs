@@ -6,14 +6,12 @@ namespace Scoreboard
 {
     public partial class ControllerForm : Form
     {
-        private ScoreController ScoreController;
-        private FoulController FoulController;
         private ClockController ClockController;
+        private FoulController FoulController;
         private PeriodController PeriodController;
         private PossessionController PossessionController;
+        private ScoreController ScoreController;
         private TimeoutController TimeoutController;
-
-        private delegate void HornDelegate(bool enabled);
 
         public ControllerForm()
         {
@@ -22,29 +20,47 @@ namespace Scoreboard
             SubscribeToEvents();
         }
 
-        private void InitializeControllerInstances()
+        private void BtnAwayFoulsMinus_Click(object sender, EventArgs e)
         {
-            this.ScoreController = ScoreboardBLL.ScoreController.GetScoreController();
-            this.FoulController = ScoreboardBLL.FoulController.GetFoulController();
-            this.ClockController = ScoreboardBLL.ClockController.GetClockController();
-            this.PeriodController = ScoreboardBLL.PeriodController.GetPeriodController();
-            this.PossessionController = ScoreboardBLL.PossessionController.GetPossessionController();
-            this.TimeoutController = ScoreboardBLL.TimeoutController.GetTimeoutController();
+            FoulController.DecrementFouls(Team.Away);
         }
 
-        private void SubscribeToEvents()
+        private void BtnAwayFoulsPlus_Click(object sender, EventArgs e)
         {
-            EventMediator mediator = EventMediator.GetEventMediator();
-            mediator.ClockChange += ControllerForm_ClockChange;
-            mediator.FoulsChange += ControllerForm_FoulsChange;
-            mediator.ScoreChange += ControllerForm_ScoreChange;
-            mediator.TimeoutChange += ControllerForm_TimeoutChange;
-            mediator.PossessionChange += ControllerForm_PossessionChange;
-            mediator.PeriodChange += ControllerForm_PeriodChange;
-            mediator.GameClockExpire += ControllerForm_GameClockExpire;
-            mediator.TimeoutClockExpire += ControllerForm_TimeoutClockExpire;
-            mediator.GameClockSounding += ControllerForm_GameClockSounding;
-            mediator.GameClockSounded += ControllerForm_GameClockSounded;
+            FoulController.IncrementFouls(Team.Away);
+        }
+
+        private void BtnAwayMinus_Click(object sender, EventArgs e)
+        {
+            ScoreController.ScoreEvent(Team.Away, -1);
+        }
+
+        private void BtnAwayPlus_Click(object sender, EventArgs e)
+        {
+            ScoreController.ScoreEvent(Team.Away, 1);
+        }
+
+        private void BtnClock_Click(object sender, EventArgs e)
+        {
+            var gametime = ClockController.GetGameTime();
+            if (gametime.Minutes > 0 || gametime.Seconds > 0 || gametime.Tenths > 0)
+            {
+                GameClockTimer.Enabled = !GameClockTimer.Enabled;
+            }
+            else
+            {
+                GameClockTimer.Enabled = false;
+            }
+        }
+
+        private void BtnHomeFoulsMinus_Click(object sender, EventArgs e)
+        {
+            FoulController.DecrementFouls(Team.Home);
+        }
+
+        private void BtnHomeFoulsPlus_Click(object sender, EventArgs e)
+        {
+            FoulController.IncrementFouls(Team.Home);
         }
 
         private void BtnHomeMinus_Click(object sender, EventArgs e)
@@ -57,9 +73,9 @@ namespace Scoreboard
             ScoreController.ScoreEvent(Team.Home, 1);
         }
 
-        private void BtnPossession_Click(object sender, EventArgs e)
+        private void BtnHorn_Click(object sender, EventArgs e)
         {
-            PossessionController.ChangePossession();
+            GameHorn.Sound();
         }
 
         private void BtnMinutesMinus_Click(object sender, EventArgs e)
@@ -78,6 +94,16 @@ namespace Scoreboard
             }
         }
 
+        private void BtnPeriod_Click(object sender, EventArgs e)
+        {
+            PeriodController.IncrementPeriod();
+        }
+
+        private void BtnPossession_Click(object sender, EventArgs e)
+        {
+            PossessionController.ChangePossession();
+        }
+
         private void BtnSecondsMinus_Click(object sender, EventArgs e)
         {
             if (!GameClockTimer.Enabled)
@@ -94,34 +120,17 @@ namespace Scoreboard
             }
         }
 
-        private void BtnAwayMinus_Click(object sender, EventArgs e)
+        private void BtnShowDisplay_Click(object sender, EventArgs e)
         {
-            ScoreController.ScoreEvent(Team.Away, -1);
+            var display = new DisplayForm();
+            display.Show();
+            display.BringToFront();
         }
 
-        private void BtnAwayPlus_Click(object sender, EventArgs e)
+        private void BtnTimeoutClear_Click(object sender, EventArgs e)
         {
-            ScoreController.ScoreEvent(Team.Away, 1);
-        }
-
-        private void BtnHomeFoulsMinus_Click(object sender, EventArgs e)
-        {
-            FoulController.DecrementFouls(Team.Home);
-        }
-
-        private void BtnHomeFoulsPlus_Click(object sender, EventArgs e)
-        {
-            FoulController.IncrementFouls(Team.Home);
-        }
-
-        private void BtnPeriod_Click(object sender, EventArgs e)
-        {
-            PeriodController.IncrementPeriod();
-        }
-
-        private void BtnTimeoutStart_Click(object sender, EventArgs e)
-        {
-            TimeoutTimer.Enabled = true;
+            TimeoutTimer.Enabled = false;
+            TimeoutController.ResetTimeout();
         }
 
         private void BtnTimeoutPlus_Click(object sender, EventArgs e)
@@ -132,46 +141,9 @@ namespace Scoreboard
             }
         }
 
-        private void BtnTimeoutClear_Click(object sender, EventArgs e)
+        private void BtnTimeoutStart_Click(object sender, EventArgs e)
         {
-            TimeoutTimer.Enabled = false;
-            TimeoutController.ResetTimeout();
-        }
-
-        private void BtnAwayFoulsMinus_Click(object sender, EventArgs e)
-        {
-            FoulController.DecrementFouls(Team.Away);
-        }
-
-        private void BtnAwayFoulsPlus_Click(object sender, EventArgs e)
-        {
-            FoulController.IncrementFouls(Team.Away);
-        }
-
-        private void ControllerForm_ScoreChange(object sender, ScoreChangeEventArgs e)
-        {
-            txtHomeScore.Text = e.GameScore.HomeScore.ToString();
-            txtAwayScore.Text = e.GameScore.AwayScore.ToString();
-        }
-
-        private void ControllerForm_FoulsChange(object sender, FoulChangeEventArgs e)
-        {
-            SetFoulIndicators(e);
-            SetFoulBonusIndicators(e);
-        }
-
-        private void SetFoulBonusIndicators(FoulChangeEventArgs e)
-        {
-            lightHomeBonus.StateIndex = e.GameFouls.HomeFouls() > 6 ? 3 : 0;
-            lightHomeDoubleBonus.StateIndex = e.GameFouls.HomeFouls() > 9 ? 3 : 0;
-            lightAwayBonus.StateIndex = e.GameFouls.AwayFouls() > 6 ? 3 : 0;
-            lightAwayDoubleBonus.StateIndex = e.GameFouls.AwayFouls() > 9 ? 3 : 0;
-        }
-
-        private void SetFoulIndicators(FoulChangeEventArgs e)
-        {
-            txtHomeFouls.Text = e.GameFouls.HomeFouls().ToString();
-            txtAwayFouls.Text = e.GameFouls.AwayFouls().ToString();
+            TimeoutTimer.Enabled = true;
         }
 
         private void ControllerForm_ClockChange(object sender, ClockChangeEventArgs e)
@@ -192,6 +164,33 @@ namespace Scoreboard
             txtGameTime.Text = gametime;
         }
 
+        private void ControllerForm_FoulsChange(object sender, FoulChangeEventArgs e)
+        {
+            SetFoulIndicators(e);
+            SetFoulBonusIndicators(e);
+        }
+
+        private void ControllerForm_GameClockExpire(object sender, EventArgs e)
+        {
+            GameClockTimer.Enabled = false;
+            GameHorn.Sound();
+        }
+
+        private void ControllerForm_GameClockSounded(object sender, EventArgs e)
+        {
+            SetBtnHornEnabledTo(true);
+        }
+
+        private void ControllerForm_GameClockSounding(object sender, EventArgs e)
+        {
+            SetBtnHornEnabledTo(false);
+        }
+
+        private void ControllerForm_PeriodChange(object sender, PeriodChangeEventArgs e)
+        {
+            txtPeriod.Text = e.Period.ToString();
+        }
+
         private void ControllerForm_PossessionChange(object sender, PossessionChangeEventArgs e)
         {
             if (e.Team == Team.Home)
@@ -206,14 +205,15 @@ namespace Scoreboard
             }
         }
 
+        private void ControllerForm_ScoreChange(object sender, ScoreChangeEventArgs e)
+        {
+            txtHomeScore.Text = e.GameScore.HomeScore.ToString();
+            txtAwayScore.Text = e.GameScore.AwayScore.ToString();
+        }
+
         private void ControllerForm_TimeoutChange(object sender, TimeoutChangeEventArgs e)
         {
             txtTimeout.Text = e.Seconds.ToString();
-        }
-
-        private void ControllerForm_PeriodChange(object sender, PeriodChangeEventArgs e)
-        {
-            txtPeriod.Text = e.Period.ToString();
         }
 
         private void ControllerForm_TimeoutClockExpire(object sender, EventArgs e)
@@ -222,20 +222,19 @@ namespace Scoreboard
             GameHorn.Sound();
         }
 
-        private void ControllerForm_GameClockExpire(object sender, EventArgs e)
+        private void GameClockTimer_Tick(object sender, EventArgs e)
         {
-            GameClockTimer.Enabled = false;
-            GameHorn.Sound();
+            ClockController.DecrementGameTimeByTenth();
         }
 
-        private void ControllerForm_GameClockSounding(object sender, EventArgs e)
+        private void InitializeControllerInstances()
         {
-            SetBtnHornEnabledTo(false);
-        }
-
-        private void ControllerForm_GameClockSounded(object sender, EventArgs e)
-        {
-            SetBtnHornEnabledTo(true);
+            this.ScoreController = ScoreboardBLL.ScoreController.GetScoreController();
+            this.FoulController = ScoreboardBLL.FoulController.GetFoulController();
+            this.ClockController = ScoreboardBLL.ClockController.GetClockController();
+            this.PeriodController = ScoreboardBLL.PeriodController.GetPeriodController();
+            this.PossessionController = ScoreboardBLL.PossessionController.GetPossessionController();
+            this.TimeoutController = ScoreboardBLL.TimeoutController.GetTimeoutController();
         }
 
         private void SetBtnHornEnabledTo(bool enabled)
@@ -247,13 +246,37 @@ namespace Scoreboard
             }
             else
             {
-                btnHorn.Enabled = enabled; 
+                btnHorn.Enabled = enabled;
             }
         }
 
-        private void GameClockTimer_Tick(object sender, EventArgs e)
+        private void SetFoulBonusIndicators(FoulChangeEventArgs e)
         {
-            ClockController.DecrementGameTimeByTenth();
+            lightHomeBonus.StateIndex = e.GameFouls.HomeFouls() > 6 ? 3 : 0;
+            lightHomeDoubleBonus.StateIndex = e.GameFouls.HomeFouls() > 9 ? 3 : 0;
+            lightAwayBonus.StateIndex = e.GameFouls.AwayFouls() > 6 ? 3 : 0;
+            lightAwayDoubleBonus.StateIndex = e.GameFouls.AwayFouls() > 9 ? 3 : 0;
+        }
+
+        private void SetFoulIndicators(FoulChangeEventArgs e)
+        {
+            txtHomeFouls.Text = e.GameFouls.HomeFouls().ToString();
+            txtAwayFouls.Text = e.GameFouls.AwayFouls().ToString();
+        }
+
+        private void SubscribeToEvents()
+        {
+            EventMediator mediator = EventMediator.GetEventMediator();
+            mediator.ClockChange += ControllerForm_ClockChange;
+            mediator.FoulsChange += ControllerForm_FoulsChange;
+            mediator.ScoreChange += ControllerForm_ScoreChange;
+            mediator.TimeoutChange += ControllerForm_TimeoutChange;
+            mediator.PossessionChange += ControllerForm_PossessionChange;
+            mediator.PeriodChange += ControllerForm_PeriodChange;
+            mediator.GameClockExpire += ControllerForm_GameClockExpire;
+            mediator.TimeoutClockExpire += ControllerForm_TimeoutClockExpire;
+            mediator.GameClockSounding += ControllerForm_GameClockSounding;
+            mediator.GameClockSounded += ControllerForm_GameClockSounded;
         }
 
         private void TimeoutTimer_Tick(object sender, EventArgs e)
@@ -261,29 +284,6 @@ namespace Scoreboard
             TimeoutController.DecrementTimeout();
         }
 
-        private void BtnClock_Click(object sender, EventArgs e)
-        {
-            var gametime = ClockController.GetGameTime();
-            if (gametime.Minutes > 0 || gametime.Seconds > 0 || gametime.Tenths > 0)
-            {
-                GameClockTimer.Enabled = !GameClockTimer.Enabled;
-            }
-            else
-            {
-                GameClockTimer.Enabled = false;
-            }
-        }
-
-        private void BtnHorn_Click(object sender, EventArgs e)
-        {
-            GameHorn.Sound();
-        }
-
-        private void btnShowDisplay_Click(object sender, EventArgs e)
-        {
-            var display = new DisplayForm();
-            display.Show();
-            display.BringToFront();
-        }
+        private delegate void HornDelegate(bool enabled);
     }
 }
