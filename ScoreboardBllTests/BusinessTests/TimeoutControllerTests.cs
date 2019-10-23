@@ -31,97 +31,72 @@ namespace ScoreboardBllTests
             }
         }
 
-        private void ClockControllerTests_ClockChange(object sender, ClockChangeEventArgs e)
+        private void TimeoutControllerTests_ClockChange(object sender, TimeoutChangeEventArgs e)
         {
             methodWasCalled = true;
         }
 
         [TestMethod]
-        public void SetClockForOneMinute_FireGameClockTick_ShouldBe59Seconds()
+        public void IncrementTimeout_ShouldBeThirtySeconds()
         {
-            //Arrange
-            var startingTime = new GameTime()
-            {
-                Minutes = 1
-            };
-            timeoutController.SetGameTime(startingTime);
-
-            //Act
-            timeoutController.DecrementTimeout();
-            var time = timeoutController.();
-
-            //Assert
-            Assert.AreEqual(0, time.Minutes);
-            Assert.AreEqual(59, time.Seconds);
-            Assert.AreEqual(9, time.Tenths);
+            timeoutController.ResetTimeout();
+            Assert.AreEqual(0, timeoutController.GetSeconds());
+            timeoutController.IncrementTimeoutSeconds();
+            Assert.AreEqual(30, timeoutController.GetSeconds());
         }
 
         [TestMethod]
-        public void SubscribeToEvent_DecrementShouldFireEvent()
+        public void IncrementTimeoutTwice_ShouldBeSixtySeconds()
         {
-            //Arrange
-            EventMediator.GetEventMediator().ClockChange += ClockControllerTests_ClockChange;
+            timeoutController.ResetTimeout();
+            Assert.AreEqual(0, timeoutController.GetSeconds());
+            timeoutController.IncrementTimeoutSeconds();
+            timeoutController.IncrementTimeoutSeconds();
+            Assert.AreEqual(60, timeoutController.GetSeconds());
+        }
 
-            //Act
+        [TestMethod]
+        public void IncrementTimeoutThreeTimes_ShouldBeSixtySeconds()
+        {
+            timeoutController.ResetTimeout();
+            Assert.AreEqual(0, timeoutController.GetSeconds());
+            timeoutController.IncrementTimeoutSeconds();
+            timeoutController.IncrementTimeoutSeconds();
+            timeoutController.IncrementTimeoutSeconds();
+            Assert.AreEqual(60, timeoutController.GetSeconds());
+        }
+
+        [TestMethod]
+        public void DecrementTimeout_ShouldNotGoBelowZero()
+        {
+            timeoutController.ResetTimeout();
+            Assert.AreEqual(0, timeoutController.GetSeconds());
             timeoutController.DecrementTimeout();
+            Assert.AreEqual(0, timeoutController.GetSeconds());
+        }
 
-            //Assert
-            Assert.IsTrue(methodWasCalled);
+        [TestMethod]
+        public void IncrementTimeout_RunOneDecrement_ShouldBe29Seconds()
+        {
+            timeoutController.ResetTimeout();
+            Assert.AreEqual(0, timeoutController.GetSeconds());
+            timeoutController.IncrementTimeoutSeconds();
+            Assert.AreEqual(30, timeoutController.GetSeconds());
+            timeoutController.DecrementTimeout();
+            Assert.AreEqual(29, timeoutController.GetSeconds());
         }
 
         [TestMethod]
         public void SubscribeToEvent_SetGameTimeShouldFireEvent()
         {
             //Arrange
-            EventMediator.GetEventMediator().ClockChange += ClockControllerTests_ClockChange;
+            EventMediator.GetEventMediator().TimeoutChange += TimeoutControllerTests_ClockChange;
 
             //Act
-            timeoutController.SetGameTime(new GameTime());
+            timeoutController.DecrementTimeout();
 
             //Assert
             Assert.IsTrue(methodWasCalled);
-        }
-
-        [TestMethod]
-        public void SetClockForOneTenth_FireDecrementTwice_ShouldNotGoNegative()
-        {
-            //Arrange
-            var startingTime = new GameTime()
-            {
-                Tenths = 1
-            };
-            timeoutController.SetGameTime(startingTime);
-
-            //Act
-            timeoutController.DecrementGameTimeByTenth();
-            timeoutController.DecrementGameTimeByTenth();
-            var time = timeoutController.GetGameTime();
-
-            //Assert
-            Assert.AreEqual(0, time.Minutes);
-            Assert.AreEqual(0, time.Seconds);
-            Assert.AreEqual(0, time.Tenths);
-        }
-
-        [TestMethod]
-        public void SetClockForNegativeTime_ShouldNotGoNegative()
-        {
-            //Arrange
-            var startingTime = new GameTime()
-            {
-                Tenths = -1,
-                Seconds = -1,
-                Minutes = -1
-            };
-            timeoutController.SetGameTime(startingTime);
-
-            //Act
-            var time = timeoutController.GetGameTime();
-
-            //Assert
-            Assert.AreEqual(0, time.Minutes);
-            Assert.AreEqual(0, time.Seconds);
-            Assert.AreEqual(0, time.Tenths);
         }
     }
 }
