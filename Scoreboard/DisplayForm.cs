@@ -23,6 +23,17 @@ namespace Scoreboard
             mediator.PeriodChange += ControllerForm_PeriodChange;
         }
 
+        private void UnsubscribeFromAllEvents()
+        {
+            EventMediator mediator = EventMediator.GetEventMediator();
+            mediator.ClockChange -= ControllerForm_ClockChange;
+            mediator.FoulsChange -= ControllerForm_FoulsChange;
+            mediator.ScoreChange -= ControllerForm_ScoreChange;
+            mediator.TimeoutChange -= ControllerForm_TimeoutChange;
+            mediator.PossessionChange -= ControllerForm_PossessionChange;
+            mediator.PeriodChange -= ControllerForm_PeriodChange;
+        }
+
         private void SetFoulBonusIndicators(FoulChangeEventArgs e)
         {
             lightHomeBonus.StateIndex = e.GameFouls.HomeFouls() > 6 ? 3 : 0;
@@ -89,6 +100,11 @@ namespace Scoreboard
         private void ControllerForm_PeriodChange(object sender, PeriodChangeEventArgs e)
         {
             txtPeriod.Text = e.Period.ToString();
+        }
+
+        private void DisplayForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UnsubscribeFromAllEvents();
         }
     }
 }

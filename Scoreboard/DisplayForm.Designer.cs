@@ -1235,6 +1235,7 @@
             this.MinimumSize = new System.Drawing.Size(1240, 733);
             this.Name = "DisplayForm";
             this.Text = "Scoreboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DisplayForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGameTime)).EndInit();
