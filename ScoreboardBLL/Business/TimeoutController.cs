@@ -42,5 +42,10 @@ namespace ScoreboardBLL
             }
             EventMediator.GetEventMediator().OnTimeoutChange(Seconds);
         }
+
+        public int GetSeconds()
+        {
+            return Seconds;
+        }
     }
 }

@@ -143,7 +143,10 @@ namespace Scoreboard
 
         private void BtnTimeoutStart_Click(object sender, EventArgs e)
         {
-            TimeoutTimer.Enabled = true;
+            if (this.TimeoutController.GetSeconds() > 0)
+            {
+                TimeoutTimer.Enabled = true; 
+            }
         }
 
         private void ControllerForm_ClockChange(object sender, ClockChangeEventArgs e)
