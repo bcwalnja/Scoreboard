@@ -345,7 +345,6 @@
             // 
             // pictureEdit1
             // 
-            this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureEdit1.EditValue = global::Scoreboard.Properties.Resources.Tech_Support_ONE;
             this.pictureEdit1.Location = new System.Drawing.Point(451, 399);
             this.pictureEdit1.Name = "pictureEdit1";
@@ -977,7 +976,7 @@
             // 
             // txtHomeScore
             // 
-            this.txtHomeScore.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#3C3C00");
+            this.txtHomeScore.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Black");
             this.txtHomeScore.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FFFF64");
             this.txtHomeScore.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent7});
@@ -1043,7 +1042,7 @@
             // 
             // txtGameTime
             // 
-            this.txtGameTime.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#400000");
+            this.txtGameTime.AppearanceOff.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Black");
             this.txtGameTime.AppearanceOn.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FF5050");
             this.txtGameTime.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Digital.DigitalBackgroundLayerComponent[] {
             this.digitalBackgroundLayerComponent1});
@@ -1058,7 +1057,6 @@
             // 
             this.digitalBackgroundLayerComponent1.BottomRight = new DevExpress.XtraGauges.Core.Base.PointF2D(211.1F, 106.075F);
             this.digitalBackgroundLayerComponent1.Name = "digitalBackgroundLayerComponent1";
-            this.digitalBackgroundLayerComponent1.Shader = new DevExpress.XtraGauges.Core.Drawing.OpacityShader("");
             this.digitalBackgroundLayerComponent1.ShapeType = DevExpress.XtraGauges.Core.Model.DigitalBackgroundShapeSetType.Style3;
             this.digitalBackgroundLayerComponent1.TopLeft = new DevExpress.XtraGauges.Core.Base.PointF2D(26F, 0F);
             this.digitalBackgroundLayerComponent1.ZOrder = 1000;
